@@ -1,0 +1,10 @@
+[package]
+
+name = "news"
+version = "0.0.1"
+authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
+
+[dependencies]
+iron = "0.2.2"
+yaml-rust = "0.2.1"
+# rust-haml = "*"
