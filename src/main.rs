@@ -14,8 +14,27 @@ mod public_html;
 
 use public_html::index::make_html;
 
+use std::fs;
+
+use std::path::Path;
+
+use std::io;
+use std::io::prelude::*;
+use std::fs::File;
+
 fn main()
 {
+
+    // let first = dir.next().unwrap().unwrap();
+    // println!("{:?}", first.path());
+
+    let data_dir = Path::new("./data");
+
+    for entry in fs::read_dir(data_dir).unwrap() {
+        let filename = entry.unwrap();
+        parse_slide_file(filename);
+    }
+
   let get_root = |_: &mut Request| {
     let content_type = "text/html".parse::<Mime>().unwrap();
     Ok(Response::with((status::Ok, content_type, make_html())))
@@ -28,34 +47,26 @@ fn main()
   Iron::new(router).http("localhost:3000").unwrap();
 
 }
+extern crate yaml_rust;
+use yaml_rust::{Yaml, YamlLoader};
+use std::collections::BTreeMap;
 
+fn parse_slide_file(path : fs::DirEntry)
+{
+  let mut f = fs::File::open(path.path()).unwrap();
+  let mut s = String::new();
+  f.read_to_string(&mut s);
+  // let docs = YamlLoader::load_from_string(s).unwrap();
+  let docs = YamlLoader::load_from_str(&s).unwrap();
+  let doc = &docs[0];
 
+  let data = doc.as_hash().unwrap();
 
-// fn main()
-// {
-// let actual = make_html();
-// let expected = "\
-// <html>\
-//   <head>\
-//     <title>Hello world!</title>\
-//   </head>\
-//   <body>\
-//     <h1 id=\"heading\">Hello! This is &lt;html /&gt;</h1>\
-//     <p>Let's <i>count</i> to 10!</p>\
-//     <ol id=\"count\">\
-//       <li first>1</li>\
-//       <li>2</li>\
-//       <li>3</li>\
-//       <li>4</li>\
-//       <li>5</li>\
-//       <li>6</li><li>7</li>\
-//       <li>8</li>\
-//       <li>9</li>\
-//       <li>10</li>\
-//     </ol>\
-//     <br /><br />\
-//     <p>Easy!</p>\
-//   </body>\
-// </html>";
-// assert_eq!(expected, actual);
-// }
+  let date_key = Yaml::String("date".to_string());
+
+  let date = data.get(&date_key).unwrap();
+
+  println!("{:?} {}", path.path(), date.as_str().unwrap());
+  // println!("  {:?}", date);
+
+}

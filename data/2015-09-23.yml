@@ -1,0 +1,11 @@
+---
+  title: Rusty News
+  date: Sep 23, 2015
+  items:
+    - title: Version 1.3 Released
+      bullets:
+
+    - title: Creation of the _Rustonomicon_
+      bullets:
+        - '"The Dark Arts of Advanced and Unsafe Rust Programming"'
+        - Explainations of how rust is implemented
