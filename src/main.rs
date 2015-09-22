@@ -16,17 +16,17 @@ use public_html::index::make_html;
 
 fn main()
 {
+  let get_root = |_: &mut Request| {
+    let content_type = "text/html".parse::<Mime>().unwrap();
+    Ok(Response::with((status::Ok, content_type, make_html())))
+  };
+
   let mut router = Router::new();
 
   router.get("/", get_root);
 
   Iron::new(router).http("localhost:3000").unwrap();
 
-
-  let get_root = |_: &mut Request| {
-    let content_type = "text/html".parse::<Mime>().unwrap();
-    Ok(Response::with((status::Ok, content_type, make_html())))
-  };
 }
 
 
