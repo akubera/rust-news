@@ -5,37 +5,26 @@ pub fn
 make_html() -> String
 {
 
+    let s = html! {
+
+    b { : "something!" }
+}.into_string().unwrap();
+
 let res = html! {
-    html {
-      head {
-          title { : "Hell world!" }
-          meta(charset="utf-8");
-      }
-      body {
-        // attributes
-        h1(id="heading") {
-            // Insert escaped text
-            : "Hello! This is <html />"
-        }
-        p { // Insert raw text (unescaped)
-          : raw!("Let's <i>count</i> to 10!") }
-        ol(id="count") {
-            // You can embed for loops, while loops, and if statements.
-            @ for i in 0..10 {
-                li(first? = (i == 0)) {
-                    // Format some text.
-                    : format_args!("{}", i+1)
-                }
-            }
-        }
-        // You need semi-colons for tags without children.
-        br; br;
-        p {
-        // You can also embed closures.
-            |tmpl| { tmpl << "Easy!"; }
-        }
-      }
-    }
+html {
+  head {
+    title { : "Rust News Roundup!" }
+    meta(charset="utf-8");
+  }
+  body {
+    div(class="reveal") { div(class="slides") {
+
+
+    : raw! {s}
+
+    } }
+  } // body
+}
 }.into_string().unwrap();
 
 return res;
