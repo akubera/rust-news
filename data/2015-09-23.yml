@@ -3,7 +3,17 @@
   date: Sep 23, 2015
   items:
     - title: Version 1.3 Released
+
+    - title: v1.3 : Improved Efficiency
       bullets:
+          - substring matcher
+          - Vec::resize Read::read_to_end
+          - PartialEq
+
+    - title: v1.3 : New APIs
+      bullets:
+          - std::time::Duration
+          - - works with time deltas
 
     - title: Creation of the _Rustonomicon_
       bullets:
