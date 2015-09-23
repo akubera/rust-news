@@ -14,3 +14,8 @@ yaml-rust = "0.2.1"
 # maud_macros = "*"
 
 horrorshow = "0.5.3"
+staticfile = "*"
+logger = "*"
+
+[dependencies.mount]
+git = "https://github.com/iron/mount.git"

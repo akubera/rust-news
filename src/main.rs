@@ -2,13 +2,22 @@
 #[macro_use]
 extern crate horrorshow;
 extern crate iron;
+#[macro_use]
 extern crate router;
+extern crate staticfile;
+extern crate mount;
+extern crate logger;
 
+use mount::Mount;
 use router::Router;
 
 use iron::prelude::*;
 use iron::mime::Mime;
 use iron::status;
+
+use iron::middleware::Handler;
+
+use staticfile::Static;
 
 mod public_html;
 
@@ -21,32 +30,53 @@ use std::path::Path;
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
+use logger::Logger;
 
 fn main()
 {
-
     // let first = dir.next().unwrap().unwrap();
     // println!("{:?}", first.path());
+  //
+  //   let data_dir = Path::new("./data");
+  //
+  //   for entry in fs::read_dir(data_dir).unwrap() {
+  //       let filename = entry.unwrap();
+  //       parse_slide_file(filename);
+  //   }
+  //
+  // let get_root = |_: &mut Request| {
+  //   let content_type = "text/html".parse::<Mime>().unwrap();
+  //   Ok(Response::with((status::Ok, content_type, make_html())))
+  // };
 
-    let data_dir = Path::new("./data");
-
-    for entry in fs::read_dir(data_dir).unwrap() {
-        let filename = entry.unwrap();
-        parse_slide_file(filename);
-    }
-
-  let get_root = |_: &mut Request| {
-    let content_type = "text/html".parse::<Mime>().unwrap();
-    Ok(Response::with((status::Ok, content_type, make_html())))
-  };
+  let mut mount = Mount::new();
+  mount.mount("/", Static::new(Path::new("client")));
 
   let mut router = Router::new();
+  // router.get("/", get_root);
 
-  router.get("/", get_root);
+  // router.get("/", mount);
+  router.get("/", |req: &mut Request| {
+    Ok(Response::with((status::Ok, "Hello World!")))
+  });
 
-  Iron::new(router).http("localhost:3000").unwrap();
+
+  // chain.link_before(mount);
+  // chain.link(router);
+
+
+  let host_str = "localhost:3000";
+  println!("Running on http://{}", host_str);
+
+  // Iron::new(router).http(host_str).unwrap();
+  let mut chain = Chain::new(router);
+  chain.link(mount);
+  chain.link(Logger::new(None));
+  Iron::new(chain).http(host_str).unwrap();
 
 }
+
+
 extern crate yaml_rust;
 use yaml_rust::{Yaml, YamlLoader};
 use std::collections::BTreeMap;

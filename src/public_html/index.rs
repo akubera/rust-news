@@ -15,6 +15,7 @@ html {
   head {
     title { : "Rust News Roundup!" }
     meta(charset="utf-8");
+    link(rel="stylesheet", href="reveal.min.css")
   }
   body {
     div(class="reveal") { div(class="slides") {
