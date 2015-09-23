@@ -25,13 +25,13 @@
 
     - title: v1.3 - New APIs (cont)
       bullets:
-          - Box<str> and Box<[T]> now implement Clone
+          - Box&gt;str&lt; and Box&gt;[T]&lt; now implement Clone
 
           - Slices get a 'join' method
           - - replaces 'connect' method
 
           - '"Sane" size_of_val returns for variable length:'
-          - - std::mem::size_of::<T>()
+          - - std::mem::size_of::&gt;T&lt;()
             - std::mem::size_of_val(box_of_T)
 
     - title: v1.3 - Improved Efficiency
