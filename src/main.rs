@@ -2,6 +2,7 @@
 #[macro_use]
 extern crate horrorshow;
 extern crate iron;
+
 #[macro_use]
 extern crate router;
 extern crate staticfile;
@@ -32,8 +33,15 @@ use std::io::prelude::*;
 use std::fs::File;
 use logger::Logger;
 
+mod news_server;
+
+use news_server::HTTPServer;
+
 fn main()
 {
+    let server = HTTPServer { port : 3000 };
+    println!("listening on port: {}", server.port);
+
     // let first = dir.next().unwrap().unwrap();
     // println!("{:?}", first.path());
   //
@@ -56,9 +64,11 @@ fn main()
   // router.get("/", get_root);
 
   // router.get("/", mount);
-  router.get("/", |req: &mut Request| {
+  router.get("/", |_: &mut Request| {
     Ok(Response::with((status::Ok, "Hello World!")))
   });
+
+  // mount.mount("/", router);
 
 
   // chain.link_before(mount);
@@ -68,11 +78,11 @@ fn main()
   let host_str = "localhost:3000";
   println!("Running on http://{}", host_str);
 
-  // Iron::new(router).http(host_str).unwrap();
-  let mut chain = Chain::new(router);
-  chain.link(mount);
-  chain.link(Logger::new(None));
-  Iron::new(chain).http(host_str).unwrap();
+  Iron::new(router).http(host_str).unwrap();
+  // let mut chain = Chain::new(router);
+  // chain.link(mount);
+  // chain.link(Logger::new(None));
+  // Iron::new(chain).http(host_str).unwrap();
 
 }
 
