@@ -1,0 +1,4 @@
+[submodule "data"]
+	path = data
+	url = https://github.com/akubera/rust-news.git
+	branch = news
