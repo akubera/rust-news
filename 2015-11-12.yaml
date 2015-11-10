@@ -7,3 +7,18 @@ authors:
 slides:
 
   - title: *Version 1.4 Released!*
+
+  - title: 1.4 - Language Features
+    bullets:
+      - "'use as' syntax added:"
+      - - use foo::{bar as boo, spam as can}
+      - '"pub extern crate"' issues warning
+
+  - title: 1.4 - Performance Enhancements
+    bullets:
+      - More windows support (MSVS)
+
+
+  - title: Ubuntu Make Features Rust
+    bullets:
+      - Build script with
