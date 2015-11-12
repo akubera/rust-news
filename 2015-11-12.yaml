@@ -1,24 +1,69 @@
 ---
 title: November News
 date: Nov 12, 2015
-authors:
-  - Andrew Kubera
+author: Andrew Kubera
 
 slides:
 
-  - title: *Version 1.4 Released!*
+  - title: "*Version 1.4 Released!*"
 
   - title: 1.4 - Language Features
     bullets:
-      - "'use as' syntax added:"
-      - - use foo::{bar as boo, spam as can}
-      - '"pub extern crate"' issues warning
+      - '"use as" syntax added'
+      - - 'use foo::{bar as boo, spam as can}'
+      - '"pub extern crate" issues warning'
+
+  - title: 1.4 - API Changes - Stable (41 total)
+    bullets:
+      - 'Vec::append'
+      - '{Rc,Arc}::downgrade'
+      - 'sync::Weak'
+      - 'Result::expect'
+      - 'CString::from_raw'
+      - 'CStr::to_str'
+
+  - title: 1.4 - API Changes - Stable (continued)
+    bullets:
+      - 'slice::Iter::as_slice'
+      - 'CStr::to_string_lossy'
+      - '{Udp,Tcp}Socket::read_timeout'
+      - 'thread::sleep (Duration)'
+
+  - title: 1.4 - API Changes - Depricated
+    bullets:
+      - 'Result::as_slice'
+      - 'Option::as_slice'
+      - 'f32::from_str_radix'
+      - 'BTreeMap::with_b'
 
   - title: 1.4 - Performance Enhancements
     bullets:
-      - More windows support (MSVS)
+      - '"slice::{Windows,Chunks,ChunksMut}" count,nth,last now O(1)'
+      - faster string comparison
 
-
-  - title: Ubuntu Make Features Rust
+  - title: 1.4 - Misc
     bullets:
-      - Build script with
+      - Cargo update more verbose
+      - - shows the old and new library versions
+      - More windows support
+      - - 64-bit MSVC compiler
+
+  - title: Cargo `install`
+    bullets:
+      - New cargo commands `cargo install` & `cargo uninstall
+      - Allows for installation of binary crates
+      - installs programs to $CARGO_HOME or $HOME/.cargo
+
+  - title: Notable packages
+    bullets:
+      - libloading
+      - - Safer dynamic library linking
+      - pebble.rs
+      - - rust on pebble smartwatch
+      - 'rust-doom'
+      - -  A Doom Renderer written in Rust.
+
+  - title: '"Ubuntu Make" Features Rust'
+    bullets:
+      - New package manager specific to development packages
+      - One-command installation of complete rust environment
