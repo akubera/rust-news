@@ -3,14 +3,12 @@
 // \brief Main file for the news server
 //
 #![feature(plugin)]
-
-// use news::yaml_to_slides;
-
 #![plugin(news)]
 
 extern crate pencil;
 extern crate webbrowser;
 
+use std::thread;
 use pencil::{Pencil, Request, Response, PencilResult};
 
 
@@ -37,7 +35,8 @@ fn main()
   app.static_folder = "reveal.js".into();
   app.get("/", "hello", hello);
   app.enable_static_file_handling();
-  webbrowser::open("http://127.0.0.1:5000");
+  thread::spawn(|| {
+      webbrowser::open("http://127.0.0.1:5000");
+  });
   app.run("127.0.0.1:5000");
-// if .is_ok() {
 }
