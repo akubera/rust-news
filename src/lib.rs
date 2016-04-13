@@ -10,6 +10,10 @@ extern crate rustc;
 extern crate rustc_plugin;
 
 
+#[macro_use]
+extern crate horrorshow;
+
+
 use std::io::prelude::*;
 use syntax::codemap::Span;
 use syntax::parse::token;
@@ -22,6 +26,7 @@ use std::error::Error;
 // use syntax::parse::token::InternedString;
 // use syntax::util::interner::{RcStr, StrInterner};
 
+use horrorshow::prelude::*;
 
 extern crate yaml_rust;
 use yaml_rust::{Yaml, YamlLoader};  // , YamlEmitter};
@@ -149,13 +154,13 @@ pub fn expand_rn(cx: &mut ExtCtxt, sp: Span, args: &[TokenTree])
     let doc = &docs[0];
 
 
-
-    let title_slide = format!(
-        "<section><h1>{title}</h1><p>{date}</p><p><small>{author}</small></p></section>",
-        title = doc["title"].as_str().unwrap(),
-        date = doc["date"].as_str().unwrap(),
-        author = doc["author"].as_str().unwrap()
-    );
+    let title_slide = html! {
+        section {
+          h1 {: doc["title"].as_str().unwrap() }
+          p {: doc["date"].as_str().unwrap() }
+          p { small {: doc["author"].as_str().unwrap() }}
+        }
+    }.into_string().unwrap();
 
     let mut slide_vec = vec![title_slide];
     let title_key = Yaml::from_str("title");
@@ -176,15 +181,14 @@ pub fn expand_rn(cx: &mut ExtCtxt, sp: Span, args: &[TokenTree])
           "".into()
         };
 
-        // let title = ;
-        let slide = format!("<h3>{title}</h3><ul>{bullets}</ul>",
-            title = title,
-            bullets = bullets
-        );
 
 
-        slide_vec.push(format!("<section>{}</section>", slide));
-
+        slide_vec.push( html! {
+            section {
+                h3 {: title}
+                ul {: bullets}
+            }
+        }.into_string().unwrap());
     }
 
     let content = slide_vec.join("\n");
