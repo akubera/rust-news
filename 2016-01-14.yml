@@ -1,19 +1,18 @@
 ---
 title: January News
-date: Jan 14, 2015
+date: Jan 14, 2016
 author: Andrew Kubera
 
 slides:
 
-  - title: "*Version 1.5 Released!*"
-
-  - title: 1.5 - Language Features
-    bullets:
-
-  - title:  1.5 - Cargo
-    bullets:
-
   - title: Notable packages
     bullets:
-      - Diesel
-      - - ORM & Query Builder
+      - Neon
+      - - Nodejs + Rust
+      - Shiplift
+      - - Docker interface
+
+  - title: Notable Projects
+    bullets:
+      - YouCompleteMe
+      - - Vim autocomplete now supports Rust
