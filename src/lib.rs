@@ -186,7 +186,7 @@ pub fn expand_rn(cx: &mut ExtCtxt, sp: Span, args: &[TokenTree])
         slide_vec.push( html! {
             section {
                 h3 {: title}
-                ul {: bullets}
+                ul {: raw!(bullets) }
             }
         }.into_string().unwrap());
     }

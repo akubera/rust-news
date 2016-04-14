@@ -19,7 +19,7 @@ use news_server::HTTPServer;
 
 fn hello(_: &mut Request) -> PencilResult
 {
-    Ok(Response::from(yaml_to_html!("data/2016-03-10.yaml")))
+    Ok(Response::from(yaml_to_html!("data/2016-04-14.yaml")))
     // Ok(Response::from("Hello World!"))
 }
 
