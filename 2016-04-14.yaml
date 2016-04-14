@@ -11,30 +11,30 @@ slides:
 
   - title: Version 1.8
     bullets:
-      - "Stabalization of in-place operators (+=, etc) use std::ops::AddAssign"
+      - "Stabalization of in-place operators (+=, -=, etc) use std::ops::{AddAssign, SubAssign}"
       - Create empty struct with brackets
-        - Old Way - struct Foo;
+      - - Old Way - struct Foo;
         - New Way - struct Foo { }
 
   - title: Version 1.8
     bullets:
       - Windows MSVC 32-bit supports unwrapping
       - rustc
-        - The --print targets flag prints a list of supported targets
+      - - The --print targets flag prints a list of supported targets
         - The --print cfg flag prints the cfgs defined for the current target.
 
   - title: Version 1.8
     bullets:
       - Added Struct std::time::Instant
-        - A measurement of a monotonically increasing clock.
+      - - A measurement of a monotonically increasing clock.
         - not guaranteed to be steady
       - std::time::SystemTime
-        - A measurement of the system clock
+      - - A measurement of the system clock
         - Not monotonically increasing (duration_since() yields Result<Duration, SystemTimeError>)
 
   - title: Cargo
     bullets:
-      - `cargo init` creates project in current directory
+      - "`cargo init` creates project in current directory"
       - new configuration options
       - Envars take precedence over config variables.
 
@@ -46,15 +46,15 @@ slides:
   - title: Notable Packages
     bullets:
       - токамак
-        - Rust IDE plugin for Atom
+      - - Rust IDE plugin for Atom
       - Rustup
-        - Successor to multirust
+      - - Successor to multirust
 
   - title: Notable Packages
     bullets:
       - Tikv
-        - Distributed key value database
+      - - Distributed key value database
       - Neon
-        - Native JS object wrapper
+      - - Native JS object wrapper
       - Emit
-        - Structured event emitter
+      - - Structured event emitter
