@@ -1,0 +1,61 @@
+---
+title: Rusty News
+date: May 12, 2016
+author: Andrew Kubera
+
+slides:
+  - title: RustConf
+    bullets:
+      - First Rust-based conference
+      - 'Portland: Sep 10, 2016'
+
+  - title: MIR
+    bullets:
+      - 'Mid-level IR'
+      - Extra stage in compilation
+      - More optimizations possible
+      - Better type/borrow checking
+
+  - title: Cargo APK
+    bullets:
+      - Rust for Android
+      - - Joke in here somewhere
+      - rustup target add arm-linux-androideabi
+      - cargo install cargo-apk
+
+  - title: Noteable Projects
+    bullets:
+      - rustw
+      - - Web frontend for rust compiler
+        - 'Why Not?'
+
+      - Alchemist
+      - - Standardized linux (unix?) package installation
+        - Uses system package manager as backend
+        - '&lt;xkcd comic here&gt;'
+
+  - title: Noteable Projects
+    bullets:
+      - Xi
+      - - Text editor written in Rust
+
+      - CoreUtils
+      - - Reimplement core unix utilities in Rust
+        - '(Something I was going to try)'
+
+  - title: Noteable Projects
+    bullets:
+      - winapi-kmd-rs
+      - - Windows kernel-mode drivers
+        - 'just proof-of-concept project'
+
+      - Tera
+      - - HTML templates in rust
+        - Nice walkthrough on website
+
+  - title: RFC
+    bullets:
+      - '(1398) Custom Allocators'
+      - '(1444) C compatible unions'
+
+  - title: Fin.
