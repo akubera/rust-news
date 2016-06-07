@@ -1,0 +1,32 @@
+---
+title: Rusty News
+date: Jun 8, 2016
+author: Andrew Kubera
+
+slides:
+  - title: "1 year of rust 1!"
+    bullets:
+      - "11,894 commits"
+      - "9 Releases"
+      - "Avg 53 crates / week"
+
+  - title: Noteable Projects
+    bullets:
+      - Helix
+      - - Rust + Ruby
+
+      - Hydrogen
+      - - Crate for generic async (epoll) socket server
+      
+      - Pest
+      - - Efficient parser generator
+
+  - title: Noteable Projects
+    bullets:
+      - apply_attr
+      - - Apply attribute to groups of items 
+
+  - title: RFC
+    bullets:
+
+  - title: Fin.
