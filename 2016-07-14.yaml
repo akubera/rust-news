@@ -1,0 +1,18 @@
+---
+title: Rusty News
+date: July 14, 2016
+author: Andrew Kubera
+
+slides:
+  - title: "Version 1.10!"
+
+  - title: "Notable Projects"
+    bullets:
+
+      - "Corrode"
+      - - "C -> Rust translator"
+
+      - "Thrussh"
+      - - "SSH client/server library"
+
+ 
