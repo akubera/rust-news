@@ -6,3 +6,7 @@ authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 [lib]
 # crate-type = ["dylib"]
 plugin = true
+
+[dependencies]
+yaml-rust = "^0.3"
+horrorshow = "0.5.6"

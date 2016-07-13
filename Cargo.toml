@@ -13,6 +13,7 @@ pencil = "^0.2"
 yaml-rust = "^0.3"
 webbrowser = "*"
 walkdir = {path = "src/walkdir"}
+horrorshow = "0.5.6"
 
 
 # iron = "0.2.2"
@@ -23,7 +24,6 @@ walkdir = {path = "src/walkdir"}
 # maud = "*"
 # maud_macros = "*"
 
-# horrorshow = "0.5.6"
 # staticfile = "*"
 # logger = "*"
 # pencil = "^0.1"
