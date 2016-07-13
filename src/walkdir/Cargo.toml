@@ -1,0 +1,8 @@
+[package]
+name = "walkdir"
+version = "0.0.1"
+authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
+
+[lib]
+# crate-type = ["dylib"]
+plugin = true
