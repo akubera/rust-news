@@ -1,21 +1,29 @@
 [package]
 
 name = "news"
-version = "2015.9.23"
+version = "2016.7.13"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 
+[lib]
+name = "news"
+# crate-type = ["dylib"]
+
 [dependencies]
-iron = "0.2.2"
-router = "*"
-yaml-rust = "0.2.1"
+pencil = "^0.2"
+yaml-rust = "^0.3"
+webbrowser = "*"
+walkdir = {path = "src/walkdir"}
+horrorshow = "0.5.6"
+
+
+# iron = "0.2.2"
+# router = "*"
+
 # rust-haml = "*"
 
 # maud = "*"
 # maud_macros = "*"
 
-horrorshow = "0.5.3"
-staticfile = "*"
-logger = "*"
-
-[dependencies.mount]
-git = "https://github.com/iron/mount.git"
+# staticfile = "*"
+# logger = "*"
+# pencil = "^0.1"
