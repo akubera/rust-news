@@ -195,11 +195,29 @@ pub fn expand_yaml_file(filename: &str) -> String
       head {
         meta(charset="utf-8") {}
         title {: "Rust News Roundup"}
-        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui") {}
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no") {}
         // script(src="https://code.jquery.com/jquery-2.1.4.min.js") {}
+        script(src="http://code.jquery.com/jquery-3.1.0.min.js", integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=", crossorigin="anonymous") {}
         link(rel="stylesheet", href="/static/reveal.min.css") {}
         link(rel="stylesheet", href="/static/revealjs/theme/simple.css") {}
-        // link(rel="stylesheet", href="/static/theme/sky.css") {}
+        // link(rel="stylesheet", href="/static/revealjs/theme/white.css") {}
+        style {:raw!("
+          .reveal .slides > section {
+            left: 0;
+          }
+          .reveal ul {
+            font-family: monospace;
+          }
+          .reveal section > ul {
+            margin-top: 40px;
+          }
+          .reveal section > ul > ul {
+            list-style-type: none;
+          }
+          .reveal section > ul > ul > li:before {
+            content: \"- \";
+          }
+        ")}
       }
       body {
         div(class="reveal") {
@@ -210,13 +228,13 @@ pub fn expand_yaml_file(filename: &str) -> String
         script {:
           "
             Reveal.initialize({
-              controls: true,
+              controls: false,
               progress: true,
-              history: true,
+              history: false,
               center: true,
-
               transition: 'slide',
-            })
+              margin: 0.1
+            });
         "
         }
 
