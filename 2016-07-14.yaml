@@ -4,35 +4,35 @@ date: July 14, 2016
 author: Andrew Kubera
 
 slides:
-  - title: "Version 1.10!"
+  - title: "Version 1.10! 🎉"
 
   - title: "1.10 Features"
     bullets:
-     - "Now built with stable rustc (1.9)!"
+     - "Now built with stable rustc! (v1.9)"
      - - "Leads to better distro support"
 
   - title: "1.10 Features"
     bullets:
-      - "cdylib"
+      - "'cdylib' crate type"
       - - "Used for embedding rust code in other languages (C compatible)"
-      - "-C panic=abort"
+      - "`-C panic=abort`"
       - - "Does not unwind stack, just aborts program == smaller & faster compilation"
 
   - title: "1.10 Improvements"
     bullets:
      - "70 API stabilizations"
-     - "Windows specific file operations"
-     - "Register/Unregister panic hooks"
-     - "CStr::from_bytes_with_nul - create CStr from byte slice"
-     - "UNIX networking std::os::unix::net::{Unix*}"
+     - - "Windows specific file operations"
+       - "Register/Unregister panic hooks"
+       - "CStr::from_bytes_with_nul - create CStr from byte slice"
+       - "UNIX networking std::os::unix::net::{Unix*}"
 
   - title: "Cargo"
     bullets:
-      - "Output to stderr"
+      - "Now outputs to stderr by default"
       - "Rust keywords banned from crate names"
       - "`cargo install --force`"
       - "`cargo --explain` == `rustc --explain`"
-  
+
   - title: "Notable Projects"
     bullets:
       - "cargo-deb"
@@ -50,4 +50,6 @@ slides:
       - - "Linear algebra crate for use in machine learning"
 
       - "Dyon v0.8"
-      - "GC-less scripting language"
+      - - "GC-less scripting language"
+
+  - title: Fin
