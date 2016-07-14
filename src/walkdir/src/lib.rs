@@ -153,7 +153,7 @@ fn expand_yaml_slide(slide_data: &std::collections::BTreeMap<yaml_rust::Yaml, ya
   let hypertext = box_html! {
     section {
       h3 {: &title }
-      div {: raw!(&bullets) }
+      : raw!(&bullets);
     }
   };
 
@@ -184,6 +184,16 @@ pub fn expand_yaml_file(filename: &str) -> String
 
   let mut slide_vec = Vec::new();
 
+  let title_slide = html! {
+    section {
+      h1 {: &title }
+      p {: &date }
+      p { small {: &author } }
+    }
+  }
+                      .into_string()
+                      .unwrap();
+
   for slide in slides.iter() {
     let next_slide = slide.as_hash().unwrap();
     let slide_html = expand_yaml_slide(next_slide);
@@ -205,23 +215,26 @@ pub fn expand_yaml_file(filename: &str) -> String
           .reveal .slides > section {
             left: 0;
           }
-          .reveal ul {
+          .reveal section ul {
             font-family: monospace;
           }
           .reveal section > ul {
             margin-top: 40px;
           }
-          .reveal section > ul > ul {
+          .reveal section > ul ul {
+            margin-bottom: 20px;
+          }
+          .reveal section ul {
             list-style-type: none;
           }
-          .reveal section > ul > ul > li:before {
-            content: \"- \";
+          .reveal section > ul > li > ul > li:before {
+            content: \"› \";
           }
         ")}
       }
       body {
         div(class="reveal") {
-          div(class="slides") {: raw!(&slide_vec.join("\n")) }
+          div(class="slides") {: raw!(&[title_slide, slide_vec.join("\n")].join("")) }
         }
         script(src="/static/revealjs/js/head.min.js") {}
         script(src="/static/revealjs/reveal.js") {}
@@ -268,6 +281,7 @@ pub fn yaml_files_to_html_vec<'cx>(cx: &'cx mut ext_base::ExtCtxt,
   let mut subdocs = Vec::new();
 
   for i in find_yaml_filenames(dirname).iter() {
+    println!(">> {}", i);
     let s = expand_yaml_file(i.as_str());
     let interned_string = token::intern_and_get_ident(s.as_str());
     subdocs.insert(0, cx.expr_str(sp, interned_string));
