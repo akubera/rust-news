@@ -101,7 +101,7 @@ pub fn _list_dir<'cx>(cx: &'cx mut ext_base::ExtCtxt, sp: Span, args: &[TokenTre
 fn build_bullet(bullet: &Yaml) -> Result<String, String>
 {
   let bullet_txt = match bullet {
-    &Yaml::String(ref s) => String::from(s.as_str()),
+    &Yaml::String(ref s) => format!("<span>{}</span>", s),
     &Yaml::Array(ref a) => build_bullets(a).unwrap(),
     _ => {
       return Err(String::from("Bad Value"));
@@ -224,10 +224,16 @@ pub fn expand_yaml_file(filename: &str) -> String
           .reveal section > ul ul {
             margin-bottom: 20px;
           }
+          .slides > section > ul li {
+            margin-top: 10px;
+          }
           .reveal section ul {
             list-style-type: none;
           }
-          .reveal section > ul > li > ul > li:before {
+          .slides > section > ul > li > span:before {
+            content: \"• \";
+          }
+          .reveal section > ul > li > ul > li > span:before {
             content: \"› \";
           }
         ")}
