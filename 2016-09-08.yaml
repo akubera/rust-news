@@ -1,0 +1,59 @@
+---
+title: Rusty News
+date: September 8, 2016
+author: Andrew Kubera
+
+slides:
+  - title: "Rust 1.11"
+    bullets:
+      - 'New Error Messages'
+      - 'Iterator has methods sum, product'
+      - 'Cell & RefCell gained `get_mut` method'
+      - '`append` method added to BinaryHeap, BTreeMap, BTreeSet'
+      - - 'Moves all elements of other into self, leaving other empty'
+      - 'to_degrees/to_radians now to libcore'
+
+  - title: "Rust 1.11"
+    bullets:
+      - "Default HashMap hasher changed - now faster!"
+      - "new `cdylib` for 'standard' dynamic libraries"
+      - - "`dylib` crate for rust-only dynamic libs"
+      - "Will be included in next Fedora version"
+
+  - title: "Cargo"
+    bullets:
+      - 'Build scripts (build.rs) can emit warning'
+      - 'Will not package crate if files are dirty'
+
+
+  - title: "Notable Crates/Projects"
+    bullets:
+      - "Plantex"
+      - - "Procedurally generated world-exploring game"
+      - "libfringe"
+      - - "lightweight context switching (only needs libcore)"
+        - "Generator/Coroutine pattern"
+
+  - title: 'On The Web'
+    bullets:
+      - '&gt; 5000 Rust questions on StackOverflow.com'
+      - 'AreWeGameYet.com - Resources for game dev'
+      - 'AreWeLearningYet.com - Resources for machine learning'
+      - 'Docs.rs - Documentation Hosting'
+
+
+  - title: Check out
+    bullets:
+      - 'Slack columbusrustsociety.slack.com'
+
+  - title: Conferences
+    bullets:
+      - 'http://rustconf.com/schedule.html'
+      - 'http://www.rustfest.eu/talks/'
+      - 'http://www.rust-belt-rust.com/sessions/'
+
+  - title: Kata Time!
+    bullets:
+      - 'https://github.com/saterus/gilded-rose-rust/'
+
+  - title: Fin
