@@ -1,0 +1,25 @@
+---
+title: Rusty News
+date: October 13, 2016
+author: Andrew Kubera
+
+slides:
+
+  - title: "Cargo"
+    bullets:
+      - 'Build scripts (build.rs) can emit warning'
+      - 'Will not package crate if files are dirty'
+
+  - title: "Notable Crates/Projects"
+    bullets:
+     - ''
+
+  - title: 'On The Web'
+    bullets:
+      - ''
+
+  - title: 'Conferences'
+    bullets:
+      - ''
+
+  - title: Fin
