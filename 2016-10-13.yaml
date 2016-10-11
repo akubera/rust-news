@@ -5,14 +5,38 @@ author: Andrew Kubera
 
 slides:
 
+  - title: "Version 1.12! 🎉"
+
+  - title: "v1.12 Features"
+    bullets:
+      - 'Error message formats have changed'
+      - - 'Can output errors as json objects'
+      - 'Compiler backend based on MIR'
+
+  - title: "v1.12 Features"
+    bullets:
+      - 'macro_rules! invocations can be made within macro_rules! invocations'
+
+  - title: "v1.12 API Stabalizations"
+    bullets:
+      - '`append` added to BinaryHeap, BTreeMap, BTreeSet'
+      - '`split_off` added to BTreeMap, BTreeSet'
+      - 'Iterator gets `sum` & `product`'
+      - 'Cell & RefCell can get_mut'
+
   - title: "Cargo"
     bullets:
-      - 'Build scripts (build.rs) can emit warning'
-      - 'Will not package crate if files are dirty'
+      - 'Workspaces'
+      - - 'Allow a group of Rust packages to share the same Cargo.lock'
+        - 'much easier to keep shared dependencies on a single version'
+        - 'Add [workspace] to Cargo.toml'
 
   - title: "Notable Crates/Projects"
     bullets:
-     - ''
+     - 'Cyano'
+     - - 'Rust to JavaScript compiler'
+     - 'rustcxx'
+     - - 'Include some C++ code in your rust sources'
 
   - title: 'On The Web'
     bullets:
@@ -20,6 +44,8 @@ slides:
 
   - title: 'Conferences'
     bullets:
-      - ''
+      - 'http://rustconf.com/schedule.html'
+      - 'http://www.rustfest.eu/talks/'
+      - 'http://www.rust-belt-rust.com/sessions/'
 
   - title: Fin
