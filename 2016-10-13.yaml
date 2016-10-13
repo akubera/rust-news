@@ -34,18 +34,37 @@ slides:
   - title: "Notable Crates/Projects"
     bullets:
      - 'Cyano'
-     - - 'Rust to JavaScript compiler'
+     - - 'Rust (MIR) to JavaScript compiler'
      - 'rustcxx'
      - - 'Include some C++ code in your rust sources'
+       - 'Snippets of C++ within Rust functions'
 
-  - title: 'On The Web'
+  - title: "Notable Crates/Projects"
     bullets:
-      - ''
+      - 'Termion'
+      - - 'Terminal application crate'
+        - 'Similar to curses (tty manipluation)'
+      - 'Wayland Client'
+      - - 'Bindings to c implementation'
+        - '3rd re-write'
+      - 'śarkarā'
+      - - 'A "Post-Quantum" cryptography library.'
+
+  - title: "Notable Crates/Projects"
+    bullets:
+      - 'CodeLLDB'
+      - - 'A LLDB front end for Visual Studio Code '
+        - 'now supports Rust debugging.'
+      - 'dataplotlib'
+      - - 'Crate for scientific plots'
+
+  - title: 'Misc'
+    bullets:
+      - 'ArchLinux now has rustup in the Community repo'
 
   - title: 'Conferences'
     bullets:
-      - 'http://rustconf.com/schedule.html'
-      - 'http://www.rustfest.eu/talks/'
+      - 'RustConf 2016 (on youtube)'
       - 'http://www.rust-belt-rust.com/sessions/'
 
   - title: Fin
