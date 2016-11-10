@@ -236,6 +236,13 @@ pub fn expand_yaml_file(filename: &str) -> String
           .reveal section > ul > li > ul > li > span:before {
             content: \"› \";
           }
+          .reveal pre {
+            display: inline-block;
+            box-shadow: none;
+            border: thin dashed black;
+            padding-left: 14pt;
+            line-height: 2.5em;
+          }
         ")}
       }
       body {
