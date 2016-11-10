@@ -5,16 +5,70 @@ author: Andrew Kubera
 
 slides:
 
+  - title: "Version 1.12.1!"
+
+  - title: "v1.12.1"
+    bullets:
+      - "Slow rollout of MIR code"
+      - "Testing rollout of a 'dot' release"
+
+  - title: "Version 1.13! 🎉"
+
+  - title: "v1.13!"
+    bullets:
+      - "Released this afternoon"
+      - "ARM target has bug - use 1.14 beta"
+
+  - title: "v1.13!"
+    bullets:
+      - "? Operator"
+      - - "Aternative for try!() macro."
+        - "<pre>let x = try!(foo());"
+        - "<pre>let x = foo()?;</pre>"
+
+  - title: "v1.13"
+    bullets:
+      - "Compiler Optimizations"
+      - - "Some crates build up to 50% faster"
+        - "More in the pipeline for 1.14"
+      - "Macros may define a type"
+      - - "<pre>let x: mtype!(foo) = ...;</pre>"
+
+  - title: "v1.13"
+    bullets:
+      - "<pre>assert_ne!</pre>"
+      - "std::convert traits for char"
+
   - title: "Notable Crates/Projects"
     bullets:
-     - 
+     - "just – Just a command runner."
+     - - "Mini script running - like make"
+       - "create a Justfile and `just works`"
+     - "cargo-update"
+     - - " A cargo subcommand for checking and applying updates to installed executables "
+     - "svgbob"
+     - - "ascii to svg image generator"
+     - Spongedown
+     - - "converts markdown to html with (svgbob)"
+       - "<small>Look forward to next version of rust-news</small>"
+
+  - title: "Notable Crates/Projects"
+    bullets:
+      - "app_dirs"
+      - - "System-specific user data every platform."
+      - "TensorFlow Rust"
+      - - "Rust language bindings for TensorFlow"
+      - "loc"
+      - - "Reimplementation of cloc - 100x faster"
+
   - title: 'Misc'
     bullets:
-      - 
-
-  - title: 'Conferences'
-    bullets:
-      - 'RustConf 2016 (on youtube)'
-      - ''
+      - "<a href='https://wiki.alopex.li/ActuallyUsingIron'>Actually Using Iron</a>"
+      - - "Fun rant on iron web server"
+      - "Mozilla Quantum"
+      - - "Next Gen rusty web engine"
+      - "<a href='https://medium.com/@bgourlie/da863a28fa1e#.cy7jtgjih'>Cross-platform development on Windows</a>"
+      - - "Rust on WSL"
+        - '"I was even able to configure IntelliJ IDEA to launch the bash shell in its terminal, meaning my entire workflow stays the same"'
 
   - title: Fin
