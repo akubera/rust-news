@@ -9,7 +9,7 @@ slides:
     bullets:
       - 128 bit integers
       - Docs show attributes (collapsible)
-      - (upcoming) <pre>safe</pre> keyword to be used inside unsafe block
+      - (upcoming) `safe` keyword to be used inside unsafe block
 
   - title: "Notable Crates/Projects"
     bullets:
