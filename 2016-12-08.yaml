@@ -5,14 +5,25 @@ author: Andrew Kubera
 
 slides:
 
-  - title: 
+  - title: News!
     bullets:
+      - 128 bit integers
+      - Docs show attributes (collapsible)
+      - (upcoming) <pre>safe</pre> keyword to be used inside unsafe block
 
   - title: "Notable Crates/Projects"
     bullets:
-      -
+      - tfs
+      - - New zfs-like filesystem for Redox-os
 
   - title: 'Misc'
     bullets:
+      - Support added for the MSP430 launchpad
+      - Rustup - Option to disable documentation installation'
+
+  - title: "On The Web"
+    bullets:
+      - <a href='http://manishearth.github.io/blog/2016/12/02/reflections-on-rusting-trust/'>Rusting Trust</a>
+      - <a href='https://github.com/diwic/reffers-rs/blob/master/docs/Pointers.md'>I used to use pointers - now what?</a>
 
   - title: Fin
