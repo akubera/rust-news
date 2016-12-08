@@ -17,6 +17,7 @@ use std::collections::BTreeMap;
 
 use syntax::ext::base as ext_base;
 use syntax::ext::build::AstBuilder;
+use syntax::symbol::Symbol;
 use syntax::parse::token;
 use syntax_pos::Span;
 use syntax::tokenstream::TokenTree;
@@ -89,7 +90,7 @@ pub fn _list_dir<'cx>(cx: &'cx mut ext_base::ExtCtxt, sp: Span, args: &[TokenTre
   let mut subdocs = Vec::new();
 
   for filename in yaml_file_vec {
-    let interned_string = token::intern_and_get_ident(filename.as_str());
+    let interned_string = Symbol::intern(filename.as_str());
     let yaml_item = cx.expr_str(sp, interned_string);
     subdocs.insert(0, yaml_item);
   }
@@ -278,7 +279,7 @@ pub fn yaml_file_to_html<'cx>(cx: &'cx mut ext_base::ExtCtxt,
 {
   let filename = token_tree_to_str(&args[0]).unwrap();
   let html = expand_yaml_file(filename.as_str()); //.unwrap();
-  let interned_string = token::intern_and_get_ident(html.as_str());
+  let interned_string = Symbol::intern(html.as_str());
   let e = cx.expr_str(sp, interned_string);
   return ext_base::MacEager::expr(e);
 }
@@ -296,7 +297,7 @@ pub fn yaml_files_to_html_vec<'cx>(cx: &'cx mut ext_base::ExtCtxt,
   for i in find_yaml_filenames(dirname).iter() {
     println!(">> {}", i);
     let s = expand_yaml_file(i.as_str());
-    let interned_string = token::intern_and_get_ident(s.as_str());
+    let interned_string = Symbol::intern(s.as_str());
     subdocs.insert(0, cx.expr_str(sp, interned_string));
   }
 
