@@ -1,0 +1,46 @@
+---
+title: Rusty News
+date: January 5, 2017
+author: Andrew Kubera
+
+slides:
+
+  - title: "Version 1.14! 🎉"
+
+  - title: "v1.14 Features"
+    bullets:
+      - '".." can be used in ignorable partial pattern matching'
+      - 'WebAssembly is a supported target'
+      - 'Rustup has reached v1.0.0'
+
+  - title: "v1.14 Update"
+    bullets:
+      - 'println!() prints newline'
+      - '`Wrapping` implements Sum & Product'
+
+  - title: "Cargo"
+    bullets:
+      - 'Build scripts have access to cfg values'
+
+  - title: "Notable Crates/Projects"
+    bullets:
+      - 'Rocket'
+      - - 'Flask-style web framework'
+        - 'Uses #[attributes] as function decorators to define routes'
+      - 'Rain'
+      - - 'Vertical time plots in the terminal'
+
+
+  - title: 'Misc'
+    bullets:
+      - 'The Underhanded Rust Contest'
+      - - 'Can you write 100% safe Rust that hides a logic bug, or hide an exploit in unsafe Rust that passes an audit? Now’s your chance!'
+      - 'Librsv now requires Rust'
+
+  - title: "On The Web"
+    bullets:
+      - '24 days of Rust series'
+      - 'Writing an OS in Rust: Double Faults'
+      - 'Creating Expedient Microservices in Rust and Diesel'
+
+  - title: Fin
