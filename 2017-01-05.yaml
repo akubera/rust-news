@@ -27,9 +27,14 @@ slides:
       - 'Rocket'
       - - 'Flask-style web framework'
         - 'Uses #[attributes] as function decorators to define routes'
+      - 'publicsuffix'
+      - - 'Strictly RFC compilant email address verification'
+
+  - title: "Notable Crates/Projects"
+    bullets:
       - 'Rain'
       - - 'Vertical time plots in the terminal'
-
+        - "<img src='https://raw.githubusercontent.com/saschagrunert/rain/master/.github/example.gif'>"
 
   - title: 'Misc'
     bullets:
