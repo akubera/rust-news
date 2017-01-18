@@ -1,5 +1,5 @@
 [package]
-name = "walkdir"
+name = "walkdir_"
 version = "0.0.1"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 
@@ -9,4 +9,4 @@ plugin = true
 
 [dependencies]
 yaml-rust = "^0.3"
-horrorshow = "0.5.6"
+horrorshow = "0.6"

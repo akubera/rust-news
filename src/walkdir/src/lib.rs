@@ -154,7 +154,7 @@ fn expand_yaml_slide(slide_data: &std::collections::BTreeMap<yaml_rust::Yaml, ya
   let hypertext = box_html! {
     section {
       h3 {: &title }
-      : raw!(&bullets);
+      : Raw( &bullets );
     }
   };
 
@@ -201,7 +201,7 @@ pub fn expand_yaml_file(filename: &str) -> String
     slide_vec.push(slide_html);
   }
 
-  let result = box_html! {
+  let result = html! {
     html {
       head {
         meta(charset="utf-8") {}
@@ -212,7 +212,7 @@ pub fn expand_yaml_file(filename: &str) -> String
         link(rel="stylesheet", href="/static/reveal.min.css") {}
         link(rel="stylesheet", href="/static/revealjs/theme/simple.css") {}
         // link(rel="stylesheet", href="/static/revealjs/theme/white.css") {}
-        style {:raw!("
+        style {:Raw("
           .reveal .slides > section {
             left: 0;
           }
@@ -248,7 +248,11 @@ pub fn expand_yaml_file(filename: &str) -> String
       }
       body {
         div(class="reveal") {
-          div(class="slides") {: raw!(&[title_slide, slide_vec.join("\n")].join("")) }
+          div(class="slides") {
+            : Raw(
+              &[title_slide, slide_vec.join("\n")].join("")
+            )
+          }
         }
         script(src="/static/revealjs/js/head.min.js") {}
         script(src="/static/revealjs/reveal.js") {}
