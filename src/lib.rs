@@ -4,7 +4,7 @@
 //!
 
 #![feature(plugin)]
-#![plugin(walkdir)]
+#![plugin(walkdir_)]
 
 #[macro_use]
 extern crate horrorshow;
@@ -29,7 +29,7 @@ pub fn add_news_routes(app: &mut Pencil)
     let hypertext = box_html! {
     html {
       head {
-        : raw!(html::HEAD())
+        : Raw(html::HEAD())
       }
       body {
         div {

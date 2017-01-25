@@ -4,6 +4,8 @@ name = "news"
 version = "2016.7.13"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 
+build = "build.rs"
+
 [lib]
 name = "news"
 # crate-type = ["dylib"]
@@ -12,8 +14,8 @@ name = "news"
 pencil = "^0.2"
 yaml-rust = "^0.3"
 webbrowser = "*"
-walkdir = {path = "src/walkdir"}
-horrorshow = "0.5.6"
+# walkdir = {path = "src/walkdir"}
+horrorshow = "0.6"
 
 
 # iron = "0.2.2"
@@ -27,3 +29,7 @@ horrorshow = "0.5.6"
 # staticfile = "*"
 # logger = "*"
 # pencil = "^0.1"
+
+[build-dependencies]
+yaml-rust = "0.3"
+yassyl = { path = "yassyl" }
