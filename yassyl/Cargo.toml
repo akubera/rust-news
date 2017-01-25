@@ -1,0 +1,8 @@
+[package]
+name = "yassyl"
+version = "0.0.1"
+authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
+
+
+[dependencies]
+yaml-rust = "0.3"
