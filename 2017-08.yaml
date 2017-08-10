@@ -1,0 +1,70 @@
+---
+title: Rusty News
+date: August 10, 2017
+author: Andrew Kubera
+
+slides:
+
+  - title: "Version 1.19! 🎉"
+
+  - title: "v1.19 Features"
+    bullets:
+      - Union types!
+      - - Untagged enums
+        - Use with C/C++ compatibility
+      - '`eprint!` `eprintln!`'
+      - - print to stderr
+
+  - title: "v1.19 Stabilizations"
+    bullets:
+      - '`std::thread::ThreadId` struct'
+      - '`Command::envs`'
+      - '`Wrapping` implements Sum & Product'
+      - '`Vec` implements `From<&mut [T]>`'
+
+  - title: "Cargo"
+    bullets:
+      - 'Does not check out crates.io index into local directory'
+      - 'Add environment variables'
+      - - '`println!("cargo:rustc-env=FOO=bar");`'
+      - '`cargo bench --all`'
+      - - Run all benchmarks in workspace
+      - 'The --features option now accepts multiple comma or space delimited values'
+
+  - title: "Notable Crates/Projects"
+    bullets:
+      - 'tarpaulin'
+      - - 'Testing-coverage report generator'
+      - '`http` crate'
+      - - "Common structs/traits for all HTTP implementations"
+      - 'publicsuffix'
+      - - 'Strictly RFC compilant email address verification'
+
+  - title: "Notable Crates/Projects"
+    bullets:
+      - 'Cute'
+      - - 'List comprehension macro'
+        - "`c![x / 2, for x in 0..10, if (x & 1) == 0]`"
+      - 'PyO3'
+      - - 'Fork of rust-cpython'
+        - 'eliminates having to pass "py" object to every function'
+
+  - title: 'Misc'
+    bullets:
+      - '[Rust Docs Redux](https://internals.rust-lang.org/t/the-rustdoc-redux/5542)'
+      - - 'Can you write 100% safe Rust that hides a logic bug, or hide an exploit in unsafe Rust that passes an audit? Now’s your chance!'
+      - 'Librsv now requires Rust'
+
+  - title: "On The Web"
+    bullets:
+      - 'http://www.ncameron.org/blog/what-the-rls-can-do/'
+      - 'Writing an OS in Rust: Double Faults'
+      - 'Creating Expedient Microservices in Rust and Diesel'
+
+  - title: "Confrences"
+    bullets:
+      - 'RustConf : Aug 18-19 : Portland'
+      - 'RustFest : Sept 30-01 : Zürich'
+      - 'RustBeltRust : Oct 26-27 : Columbus'
+
+  - title: Fin

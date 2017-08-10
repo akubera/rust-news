@@ -1,0 +1,14 @@
+---
+title: Rusty News
+date: April 13, 2017
+author: Andrew Kubera
+
+slides:
+
+  - title: "Version 1.14! 🎉"
+
+  - title: "v1.14 Features"
+    bullets:
+      - '".." can be used in ignorable partial pattern matching'
+      - 'WebAssembly is a supported target'
+      - 'Rustup has reached v1.0.0'

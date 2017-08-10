@@ -1,0 +1,68 @@
+---
+title: The Return of Rusty News!
+date: May 11, 2017
+author: Andrew Kubera
+
+slides:
+
+
+  - title: "*Version 1.17 Released!*"
+
+  - title: "What's in 1.17?"
+    bullets:
+    - 'static lifetime is now assumed in statics and consts'
+      - '`const NAMES: &'static [&'static str; 2] = &["Foo", "bar"];`'
+    - 'field init shorthand'
+    - 'Documentation is being installed by default again. :-/'
+
+  - title: "1.17 Library Stabalizations"
+    bullets:
+    - "19 new API stabalizations"
+    - "{Arc/Rc}/{into_raw/from_raw/ptr_eq}"
+    - "`Ordering::then` allows chaining of Ordering (kinda like logic ops)"
+    - "BTreeMap::range "
+
+  - title: "1.17 Library Stabalizations"
+    bullets:
+    - "`Result::expect_err(&str)` panics if Ok"
+    - "Cell"
+    - - "swap/replace/into_inner/take"
+      - "Relaxation of Cell<T> requiring T:Copy"
+    - "Various new conversions"
+
+  - title: "1.17 Misc"
+    bullets:
+    - "Backtraces now have nicer formatting"
+    - "Cargo"
+    - - "build.rs assumed as build script by default"
+      - "`required-features` allows for skipping targets if their features are not selected"
+
+  - title: "The Rust Libz Blitz"
+    bullets:
+    - "How can the Rust community work in a focused way to polish, consolidate, and surface a core set of libraries for essential tasks?"
+    - "Review team focuses on a few crates"
+    - "*Chosen* crates are now up to the **Rust standards of quality**"
+    - "Already helped byteorder (now 1.0)"
+    - "Focus on core of really small crates (not tokio)"
+
+  - title: "Serde hits 1.0"
+    bullets:
+    - "Zero-copy deserialization"
+    - "rustc-serialize is now deprecated"
+
+  - title: Blogs
+    bullets:
+      - "[How I Broke Rust's Package Manager for All Windows Users](http://sasheldon.com/blog/2017/05/07/how-i-broke-cargo-for-windows/)"
+      - "[Definitive guide to Rust, SDL 2 and Emscripten!](https://blog.fazibear.me/definitive-guide-to-rust-sdl-2-and-emscripten-93d707b22bbb)"
+
+  - title: "Noteable Crates/Projects"
+    bullets:
+    - "[relm](https://github.com/antoyo/relm#relm)"
+    - - "GTK integration looks like the elm programming language"
+    - "[stdweb](https://github.com/koute/stdweb)"
+    - - macros for rendering javascript to send to the browser
+      - Uses serde to serialize types easily
+
+  - title: "Misc"
+    bullets:
+    - "`ripgrep` is powering text-search in Visual Studio Code 1.11"
