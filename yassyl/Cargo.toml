@@ -6,3 +6,5 @@ authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 
 [dependencies]
 yaml-rust = "0.3"
+maud-pulldown-cmark = "0.5.0"
+

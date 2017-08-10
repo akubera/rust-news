@@ -9,27 +9,39 @@ build = "build.rs"
 [lib]
 name = "news"
 # crate-type = ["dylib"]
+doc = false
 
 [dependencies]
-pencil = "^0.2"
 yaml-rust = "^0.3"
-webbrowser = "*"
-# walkdir = {path = "src/walkdir"}
-horrorshow = "0.6"
+# webbrowser = "*"
+maud = "0.16"
+maud_macros = "0.16"
 
+aster = "*"
+time = "*"
 
-# iron = "0.2.2"
-# router = "*"
+iron = "0.5"
+hyper = "*"
+staticfile = "*"
+router = "*"
+mount = "*"
+
+# pencil = "0.3"
+# nickel = "0.9"
+# rocket = "0.2"
 
 # rust-haml = "*"
-
-# maud = "*"
-# maud_macros = "*"
 
 # staticfile = "*"
 # logger = "*"
 # pencil = "^0.1"
 
+
 [build-dependencies]
 yaml-rust = "0.3"
 yassyl = { path = "yassyl" }
+slideby-html = { path = "slideby-html" }
+maud = "*"
+maud_macros = "0.16"
+
+aster = "0.41"

@@ -1,6 +1,6 @@
 //! [\file]:# (yash/src/lib.rs)
 //!
-//! Yet Anther Slide Show YAML Library
+//! Yet Another Slide Show YAML Library
 //!
 //! Build simple presentation slides from yaml documents
 //!
@@ -13,13 +13,18 @@ use std::convert;
 
 /// Slideshow object
 pub struct Slideshow {
-  title: String,
-  author: String,
-  date: String,
+  pub title: String,
+  pub author: String,
+  pub date: String,
 }
 
 
-// impl Slideshow
+impl Slideshow {
+  fn get_url(&self) -> String
+  {
+    format!("/{}.html", self.date)
+  }
+}
 
 impl<'a> convert::From<&'a Yaml> for Slideshow {
   fn from(yaml: &'a Yaml) -> Self
