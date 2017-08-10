@@ -1,0 +1,87 @@
+//! [\file]:# (build.rs)
+//!
+//! Build Script
+//!
+
+// #![feature(io)]
+
+extern crate yaml_rust;
+extern crate aster;
+
+fn main()
+{
+  generate_slides();
+}
+
+use std::io::Read;
+
+use yaml_rust::{Yaml, YamlLoader};
+
+extern crate yassyl;
+// use yassyl;
+
+use std::env;
+use std::fs::{self, File};
+use std::io::Write;
+use std::path::Path;
+
+
+fn yaml_files_in(dirname: &str) -> Vec<String>
+{
+  std::fs::read_dir(dirname)
+    .unwrap()
+    .map(|entry| entry.unwrap().path().into_os_string().into_string())
+    .filter(|s| s.is_ok())
+    .map(|s| s.unwrap())
+    .filter(|s| s.ends_with(".yaml"))
+    .collect()
+}
+
+fn generate_slides()
+{
+
+  let out_dir = env::var("OUT_DIR").unwrap();
+  let dest_path = Path::new(&out_dir).join("slides.rs");
+  let mut f = File::create(&dest_path).unwrap();
+
+  for yaml_filename in yaml_files_in("data") {
+    println!("rerun-if-changed={}", yaml_filename);
+
+    // let target_file = format!("{}.rs", yaml_filename); // : String::from_str(yaml_filename) + ".rs";
+    let target_file = Path::new(&yaml_filename).with_extension(".rs");
+    if should_skip_file_creation(&yaml_filename, &target_file) {
+      continue;
+    }
+
+    // target_file.push_str(".rs");
+
+
+    let mut s = String::new();
+    File::open(&yaml_filename).unwrap().read_to_string(&mut s).unwrap();
+
+    let docs = YamlLoader::load_from_str(&s).unwrap();
+    let doc = &docs[0];
+
+    let slides: yassyl::Slideshow = doc.into();
+  }
+
+}
+
+use std::iter::FromIterator;
+
+
+fn should_skip_file_creation(source_filename: &AsRef<Path>, target_filename: &AsRef<Path>) -> bool
+{
+  match (fs::metadata(source_filename), fs::metadata(target_filename)) {
+    (Err(_), Err(_))
+    | (Ok(_), Err(_))
+    | (Err(_), Ok(_)) => false,
+    (Ok(source_meta), Ok(target_meta)) => {
+      match (source_meta.modified(), target_meta.modified()) {
+        (Err(_), Err(_)) | (Ok(_), Err(_)) | (Err(_), Ok(_)) => false,
+        // should skip if source is older than target
+        (Ok(source_time), Ok(target_time)) => (source_time > target_time),
+      }
+    },
+  }
+}
