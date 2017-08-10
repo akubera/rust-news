@@ -1,0 +1,48 @@
+
+
+use iron::prelude::*;
+use iron::Handler;
+use iron::{self, BeforeMiddleware, AfterMiddleware, typemap};
+use time::precise_time_ns;
+use staticfile::Static;
+
+
+pub fn serve()
+{
+//   let mut router = Router::new();
+//   router.get("/", index, "index");
+
+   let serve_static = Static::new("client");
+   let mut chain = Chain::new(move |req : &mut Request | {
+       match serve_static.handle(req) {
+
+       }
+       Ok(Response::with((iron::status::Ok, "Hello World")))
+    });
+//    chain.link_before(.handle);
+   chain.link((ResponseTime, ResponseTime));
+    // chain.link_before();
+    // chain.link_after(ResponseTime);
+    let addr = ("localhost", 2000);
+    println!("listening on {}:{}", addr.0, addr.1);
+    Iron::new(chain).http(addr).unwrap();
+}
+
+struct ResponseTime;
+
+impl typemap::Key for ResponseTime { type Value = u64; }
+
+impl BeforeMiddleware for ResponseTime {
+    fn before(&self, req: &mut Request) -> IronResult<()> {
+        req.extensions.insert::<ResponseTime>(precise_time_ns());
+        Ok(())
+    }
+}
+
+impl AfterMiddleware for ResponseTime {
+    fn after(&self, req: &mut Request, res: Response) -> IronResult<Response> {
+        let delta = precise_time_ns() - *req.extensions.get::<ResponseTime>().unwrap();
+        println!("Request took: {} ms", (delta as f64) / 1000000.0);
+        Ok(res)
+    }
+}

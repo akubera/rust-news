@@ -1,0 +1,15 @@
+[package]
+name = "slideby-html"
+version = "0.0.1"
+authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
+description = "Create a slideshow in html!"
+
+[dependencies]
+maud = "0.16"
+maud_macros = "0.16"
+maud-pulldown-cmark = "0.5"
+yaml-rust = "*"
+
+[lib]
+name = "slideby_html"
+

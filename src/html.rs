@@ -8,7 +8,7 @@ pub fn REVEAL_SCRIPTS() -> String
     script(src="/static/js/reveal.min.js") {}
     script {:
       "
-        Revleal.initialize({
+        Reveal.initialize({
         controls: true,
         progress: true,
         history: true,
@@ -36,4 +36,9 @@ pub fn HEAD() -> String
   };
 
   return hypertext.into_string().unwrap();
+}
+
+
+struct HtmlDocument {
+  html
 }

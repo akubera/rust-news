@@ -12,17 +12,14 @@
 // #[allow(plugin_as_library)]
 // extern crate news;
 
-extern crate time;
 
 // extern crate pencil;
 // mod main_pencil;
 // use main_pencil::serve;
 
 extern crate iron;
-extern crate hyper;
+extern crate time;
 extern crate staticfile;
-extern crate router;
-extern crate mount;
 mod main_iron;
 use main_iron::serve;
 
@@ -35,3 +32,6 @@ fn main()
 //   main_iron();
 //   // main_pencil();
 // }
+
+
+
