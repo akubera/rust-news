@@ -19,7 +19,6 @@ slides:
     bullets:
       - '`std::thread::ThreadId` struct'
       - '`Command::envs`'
-      - '`Wrapping` implements Sum & Product'
       - '`Vec` implements `From<&mut [T]>`'
 
   - title: "Cargo"
@@ -37,8 +36,6 @@ slides:
       - - 'Testing-coverage report generator'
       - '`http` crate'
       - - "Common structs/traits for all HTTP implementations"
-      - 'publicsuffix'
-      - - 'Strictly RFC compilant email address verification'
 
   - title: "Notable Crates/Projects"
     bullets:
@@ -52,14 +49,10 @@ slides:
   - title: 'Misc'
     bullets:
       - '[Rust Docs Redux](https://internals.rust-lang.org/t/the-rustdoc-redux/5542)'
-      - - 'Can you write 100% safe Rust that hides a logic bug, or hide an exploit in unsafe Rust that passes an audit? Now’s your chance!'
-      - 'Librsv now requires Rust'
 
   - title: "On The Web"
     bullets:
       - 'http://www.ncameron.org/blog/what-the-rls-can-do/'
-      - 'Writing an OS in Rust: Double Faults'
-      - 'Creating Expedient Microservices in Rust and Diesel'
 
   - title: "Confrences"
     bullets:
