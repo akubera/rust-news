@@ -3,35 +3,27 @@
 //!
 //! Main file for the news server
 //!
+#![feature(proc_macro)]  // <- IMPORTANT don't forget this!
 
-// #![feature(pub_restricted)]
-// #![feature(plugin)]
-// extern crate pencil;
-// extern crate webbrowser;
+extern crate rouille;
+extern crate maud;
+use rouille::{Request, Response};
+use maud::html;
 
-// #[allow(plugin_as_library)]
-// extern crate news;
 
-extern crate time;
-
-// extern crate pencil;
-// mod main_pencil;
-// use main_pencil::serve;
-
-extern crate iron;
-extern crate hyper;
-extern crate staticfile;
-extern crate router;
-extern crate mount;
-mod main_iron;
-use main_iron::serve;
-
-/// Entry point for rust news application
-///
 fn main()
 {
-  serve();
+  rouille::start_server("0.0.0.0:9090", move |_request| {
+    let name = "Friend";
+    let markup = html! {
+      html {
+        head {
+          title { "hi" }
+        }
+        body {
+          p { "Hello, " (name) "!" }}
+      }
+    };
+    Response::html(markup)
+  });
 }
-//   main_iron();
-//   // main_pencil();
-// }

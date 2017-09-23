@@ -4,44 +4,14 @@ name = "news"
 version = "2016.7.13"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 
-build = "build.rs"
-
-[lib]
-name = "news"
-# crate-type = ["dylib"]
-doc = false
-
 [dependencies]
 yaml-rust = "^0.3"
-# webbrowser = "*"
-maud = "0.16"
-maud_macros = "0.16"
+maud = "0.17"
+maud_macros = "0.17"
 
-aster = "*"
+pulldown-cmark = "*"
+maud-pulldown-cmark = "0.5"
+
 time = "*"
 
-iron = "0.5"
-hyper = "*"
-staticfile = "*"
-router = "*"
-mount = "*"
-
-# pencil = "0.3"
-# nickel = "0.9"
-# rocket = "0.2"
-
-# rust-haml = "*"
-
-# staticfile = "*"
-# logger = "*"
-# pencil = "^0.1"
-
-
-[build-dependencies]
-yaml-rust = "0.3"
-yassyl = { path = "yassyl" }
-slideby-html = { path = "slideby-html" }
-maud = "*"
-maud_macros = "0.16"
-
-aster = "0.41"
+rouille = "1.0.3"
