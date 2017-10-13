@@ -6,6 +6,7 @@ authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 
 [dependencies]
 yaml-rust = "^0.3"
+
 maud = "0.17"
 maud_macros = "0.17"
 
@@ -15,3 +16,5 @@ maud-pulldown-cmark = "0.5"
 time = "*"
 
 rouille = "1.0.3"
+walkdir = "1"
+regex = "0.1.80"
