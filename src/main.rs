@@ -158,7 +158,7 @@ fn yaml_src_to_slide(src: String) -> maud::PreEscaped<String>
       }
       body style="transition: -webkit-transform 0.8s ease 0s;" {
         div class="reveal slide center has-vertical-slides has-horizontal-slides ready" {
-          div.slides {
+          div class="slides" {
             section {
               h1 { (title) }
               p { (date) }
@@ -224,16 +224,6 @@ fn make_bullets(data: &Array) -> maud::PreEscaped<String>
         @match *b {
           Yaml::String(ref s) => {
             li { (make_bullet(s)) }
-
-            // @let mut html_buff = String::new();
-            // @let parser = Parser::new(s);
-            // ^(pulldown_cmark::html::push_html(&mut html_buff, parser))
-
-            // @let md = Markdown::from_string(s);
-            // li { (&PreEscaped(s)) }
-            // li { (PreEscaped(push_html(&mut html_buff, parser); html_buff)) }
-            // li { (s) }
-
           },
           Yaml::Array(ref a) => {
             li { (make_bullets(a)) }
