@@ -1,0 +1,80 @@
+---
+title: November Rust News {{br}} 🗞
+date: November 9, 2017
+author: Andrew Kubera
+
+slides:
+  - title: "Rust-Belt-Rust 2017 {{br}} conference a success!"
+
+  - title: "Firefox 57 (Quantum) coming Nov 14"
+    bullets:
+      - "Includes rust-based 'stylo' rendering engine"
+      - - '[Blog post](https://hacks.mozilla.org/2017/08/inside-a-super-fast-css-engine-quantum-css-aka-stylo/)'
+      - "Breaks 'legacy' extensions"
+      - - '[Spreadsheet of extension-upgrade suggestions](https://docs.google.com/spreadsheets/d/1ZzheVRDnEpAwdQ3eHDVI6Hu5om5zhp2YtSCeB0mmLUQ/edit#gid=0)'
+
+  - title: "RFCs"
+    bullets:
+      - "`#[derive_unfinished(T1, T2)]` ([2205](https://github.com/rust-lang/rfcs/pull/2205))"
+      - - "Partially implement traits"
+        - "automatically add missing trait methods with a `unimplemented!()` stub"
+
+  - title: "RFCs"
+    bullets:
+      - "Partial Turbofish ([2176](https://github.com/rust-lang/rfcs/pull/2176))"
+      - - "`turbo::<u32, _, _, _>()` becomes either"
+        - "`turbo::<u32, ..>()`"
+        - "`turbo::<u32>()`"
+
+  - title: "Cargo News"
+    bullets:
+      - "[Alternative registries](https://boats.gitlab.io/blog/post/2017-10-28-alternative-registries/)!"
+      - - '`cargo-features = ["alternative-registries"]`'
+        - 'In `cargo/config` file, add {{br}} `[registries.my-registry]` block'
+
+  - title: "Cargo News"
+    bullets:
+      - "Begun switch to `pulldown` to generate rust-docs"
+      - "[cargo-outdated](https://crates.io/crates/cargo-outdated)"
+      - - "List your outdated crates"
+
+  - title: "Crate News"
+    bullets:
+      - "Bindgen 0.31"
+      - - More options for (en/dis)abling derived traits
+        - Timers for code-generation phases
+        - csmith fuzzing infrastructure
+        - safer enums
+
+  - title: "Notable Crates"
+    bullets:
+      - "[gutenberg](https://www.getgutenberg.io/)"
+      - - Single-binary static site generator
+        - Sass compilation
+        - Pagination
+        - Syntax Highlighting
+        - Table of Contents
+        - and more!
+
+  - title: "Notable Crates"
+    bullets:
+      - "[vulkano](https://crates.io/crates/vulkano)"
+      - - Safe and rich Rust wrapper around the Vulkan API
+
+      - "[fd](https://github.com/sharkdp/fd) (fd-find)"
+      - - Replacement for `find` command
+
+  - title: "Misc."
+    bullets:
+      - "swager.io supports rust"
+      - - "auto-generate rust client+server from OpenAPI specifications"
+        - "Hyper, SerDe, mockers"
+      - "[Standford course](https://stanford-cs242.github.io/assignments/assign6/) uses rust for assignments"
+      - "[Solving 50 Euler problems in under 0.1 seconds with Rust](https://github.com/dhbradshaw/ProjectEulerFastRust)"
+
+  - title: "Call For Help"
+    bullets:
+      - "Cargo 'offline mode'"
+      - "`stdsimd` intrinsics (x86, ARM NEON)"
+
+  - title: Fin
