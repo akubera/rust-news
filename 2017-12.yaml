@@ -1,0 +1,119 @@
+---
+title: December Rust News {{br}} 🗞
+date: December 14, 2017
+author: Andrew Kubera
+
+slides:
+  - title: "Rust 1.22 Released! 🎉"
+
+  - title: "v1.22 - Features"
+    bullets:
+      - "impl **Try** for **Option**"
+      - - "You can now use `?` operator to \"escape\" out of a function with `None`."
+        - "Cannot mix `?` with Result and Option types yet (but can in nightly!)"
+        - >
+          ```rust
+            fn try_option_some() -> Option<u8> {
+                let val = Some(1)?;
+                Some(val)
+            }
+            assert_eq!(try_option_some(), Some(1));
+          ```
+
+  - title: "v1.22 Features"
+    bullets:
+      - "Types implementing `Drop` can now be used for static/const items"
+      - "`compile_fail` doctest option"
+      - - 'doctests expected to fail'
+      - "`Box<Error>` now impls `From<Cow<str>>`"
+
+  - title: "v1.22 Features"
+    bullets:
+      - "`std::mem::Discriminant` is now guaranteed to be Send + Sync"
+      - "`fs::copy` now returns the length of the main stream on NTFS."
+      - "Properly detect overflow in Instant += Duration"
+      - "impl `Hasher` for `&mut Hasher` & `Box<Hasher>`"
+
+  - title: "Cargo News"
+    bullets:
+      - "Ability to build multi-file examples by creating a subdirectory inside examples that contains a main.rs."
+
+  - title: "Misc Language features"
+    bullets:
+      - "detect `= → :` typo in let bindings"
+
+  - title: "Approved RFCs"
+    bullets:
+      - "Option::filter ([2124](https://github.com/rust-lang/rfcs/pull/2124))"
+      - - "Passed a predicate-function which maps false results to None"
+        - >
+          ```rust
+            assert_eq!(Some(3).filter(|_| true)), Some(3));
+            assert_eq!(Some(3).filter(|_| false)), None);
+          ```
+
+  - title: "New RFCs"
+    bullets:
+     - 'Hex literals. Introduce hex literals in the form of `h"00 aa cc ff"`'
+     - "`cargo publish` with internal path dependencies [#2224](https://github.com/rust-lang/rfcs/pull/2224)"
+
+  - title: "Notable Projects"
+    bullets:
+      - "[Rocket](https://aochagavia.github.io/blog/rocket---a-rust-game-running-on-wasm/)"
+      - - Webassemby game in browser
+        - Actually took already written game, and ported
+        - Had to remove piston!
+      - "[Mercurial's OxidationPlan](https://www.mercurial-scm.org/wiki/OxidationPlan)"
+      - - "Replace python core of mercurial with Rust"
+        - "Better load times."
+
+  - title: "Notable Crates"
+    bullets:
+      - "[faster](https://github.com/AdamNiederer/faster)"
+      - - "SIMD type iterators"
+        - >
+          ```rust
+            let lots_of_3s = (&[-123.456f32; 128][..]).simd_iter()
+              .map(|v| {
+                f32s::splat(9.0) *
+                v.abs().sqrt().rsqrt().ceil().sqrt() -
+                f32s::splat(4.0) -
+                f32s::splat(2.0) })
+              .scalar_collect::<Vec<f32>>();
+          ```
+
+  - title: "Notable Crates"
+    bullets:
+      - "[failure](https://boats.gitlab.io/failure/)"
+      - - "New system for creating and managing errors"
+        - "Replaces `Error` with new `Fail` trait"
+        - '"Downcastability"'
+        - "Bound by `Send` and `Sync`, failures can be moved and shared between threads easily"
+        - >
+          ```rust
+            let mut file = File::open(cargo_toml_path)
+                              .context("Missing Cargo.toml")?;
+          ```
+
+  - title: "Notable Crates"
+    bullets:
+      - "[ammonia](https://crates.io/crates/ammonia) v1.0"
+      - - HTML sanitizer
+        - removes cross-site scripting, layout breaking, and clickjacking
+
+  - title: "Around the WWWeb"
+    bullets:
+      - "Dynamic Language Speedups"
+      - - '[Speed up your Python using Rust](https://developers.redhat.com/blog/2017/11/16/speed-python-using-rust/)'
+        - '[Writing fast and safe native Node.js modules with Rust](https://blog.risingstack.com/node-js-native-modules-with-rust/)'
+        - '[Improving Ruby Performance with Rust](https://blog.codeship.com/improving-ruby-performance-with-rust/)'
+
+  - title: "Misc."
+    bullets:
+      - "Redox-os runs cargo/rutsc"
+      - - "auto-generate rust client+server from OpenAPI specifications"
+        - "Hyper, SerDe, mockers"
+      - "New RISC-V toolchain!"
+      - "Rust Playground supports wasm output"
+
+  - title: Fin
