@@ -31,7 +31,7 @@ extern crate maud_pulldown_cmark;
 use maud_pulldown_cmark::Markdown;
 
 extern crate pulldown_cmark;
-use pulldown_cmark::html::push_html;
+// use pulldown_cmark::html::push_html;
 use pulldown_cmark::Parser;
 
 
@@ -62,7 +62,7 @@ fn handle_requests(request: &Request) -> Response
       Response::html(html! {
         html {
           head { title { "error" } }
-          body { h1 { "ERROR" }
+          body { h2 { "ERROR" }
                  p { " There was an error: " }
                  pre { (ioerr) }
                }
@@ -121,7 +121,7 @@ fn yaml_src_to_slide(src: String) -> maud::PreEscaped<String>
   let yaml_result = YamlLoader::load_from_str(&src);
   let yaml = match yaml_result {
     Err(err) => return html! { html { head { title { "ERROR" } }
-                                     body { h1 { "ERROR" }
+                                      body { h1 { "ERROR" }
                                             pre { (err) } } } },
     Ok(ref docs) => &docs[0]
   };
@@ -140,13 +140,21 @@ fn yaml_src_to_slide(src: String) -> maud::PreEscaped<String>
         link href="/static/revealjs/css/theme/simple.css" rel="stylesheet" id="theme" {}
         // link href="/static/revealjs/css/theme/black.css" rel="stylesheet" id="theme" {}
         link href="/static/revealjs/lib/css/zenburn.css" rel="stylesheet" {}
+        link href="/static/github.css" rel="stylesheet" {}
         script src="https://code.jquery.com/jquery-2.1.4.min.js" {}
         style {"
-              .reveal ul {
-                font-family: monospace;
+              .reveal ul, .reveal div {
+                font-family: Helvetica, sans;
+                font-weight: lighter;
               }
               .reveal section > ul {
-                margin-top: 40px;
+                list-style-type: none;
+              }
+              .reveal section > ul > li:before {
+                content: \"• \";
+              }
+              .reveal section > ul > li:before {
+                content: \"• \";
               }
               .reveal section > ul > ul {
                 list-style-type: none;
@@ -154,13 +162,17 @@ fn yaml_src_to_slide(src: String) -> maud::PreEscaped<String>
               .reveal section > ul > ul > li:before {
                 content: \"- \";
               }
+              .reveal code {
+                background-color: #F0F0F0;
+                padding: 4px 15px;
+              }
               "}
       }
       body style="transition: -webkit-transform 0.8s ease 0s;" {
         div class="reveal slide center has-vertical-slides has-horizontal-slides ready" {
           div class="slides" {
             section {
-              h1 { (title) }
+              h2 { (escape(title)) }
               p { (date) }
               p { small { (author) } }
             }
@@ -204,7 +216,7 @@ fn make_slide(data: &Hash) -> maud::PreEscaped<String>
   html! {
     section {
       @if let Some(title) = data.get(&Yaml::from_str("title")) {
-        h3 { (title.as_str().unwrap()) }
+        h3 { (escape(title.as_str().unwrap())) }
       }
       @if let Some(bullets) = data.get(&Yaml::from_str("bullets")) {
         @if let Some(vec) = bullets.as_vec() {
@@ -223,10 +235,10 @@ fn make_bullets(data: &Array) -> maud::PreEscaped<String>
       @for b in data {
         @match *b {
           Yaml::String(ref s) => {
-            li { (make_bullet(s)) }
+            li { (escape(s)) }
           },
           Yaml::Array(ref a) => {
-            li { (make_bullets(a)) }
+            { (make_bullets(a)) }
           },
           _ => {}
         }
@@ -235,11 +247,30 @@ fn make_bullets(data: &Array) -> maud::PreEscaped<String>
   }
 }
 
-fn make_bullet(s: &str) -> maud::PreEscaped<String>
+// fn make_bullet(s: &str) -> maud::PreEscaped<String>
+// fn make_bullet(s: &str) -> maud::PreEscaped<String>
+// {
+//   // println!("> {}",s);
+//   // let mut html_buff = String::new();
+//   // let md = parser.html();
+//   return PreEscaped(format_str(s));
+// }
+
+// fn escape(s: &str) -> String
+fn escape(s: &str) -> maud::PreEscaped<String>
 {
   let mut html_buff = String::new();
   let parser = Parser::new(s);
-  // let md = parser.html();
   pulldown_cmark::html::push_html(&mut html_buff, parser);
-  return PreEscaped(html_buff);
+  // return html_buff.replace("{{br}}", "<br/>");
+  // return html_buff;
+
+  // return PreEscaped(html_buff.replace("{{br}}", "<br/>"));
+  return PreEscaped(custom_format(html_buff));
+}
+
+
+fn custom_format(s: String) -> String
+{
+  s.replace("{{br}}", "<br/>")
 }
