@@ -1,0 +1,89 @@
+---
+title: January Rust News {{br}} 🗞
+date: Jan 11, 2018
+author: Andrew Kubera
+
+slides:
+  - title: "Happy New Year 🎉"
+
+  - title: "Rust 1.23 🎉"
+
+  - title: "Rust 1.23"
+    bullets:
+      - Avoids unnecessary copies when calling certain functions
+      - rustc memory usage falls 5-10%
+      - cargo docs moved from `doc.crates.io` -> `doc.rust-lang.org/cargo`
+
+  - title: "Rust 1.23"
+    bullets:
+      - "`std::sync::atomic` types now implement `From` their non-atomic types"
+      - - "`let x = AtomicBool::from(true);`"
+      - '`AsciiExt` trait obsolete'
+      - - 'char implements `is_ascii` method'
+
+  - title: Cargo Updates
+    bullets:
+      - "`cargo uninstall` can now uninstall more than one package in one command"
+      - "`cargo check` checks your unittests"
+
+  - title: Call for Community Blog Posts
+    bullets:
+      - Rust leaders want community input on the **Roadmap for 2018**
+      - Already have RFCs for input, but want to also encourage people to write
+        blog posts expressing opinions
+      - - Features, Tooling, Community
+      - email link to `community@rust-lang.org` or tweet with tag `#Rust2018`
+      - "[more info]('https://blog.rust-lang.org/2018/01/03/new-years-rust-a-call-for-community-blogposts.html')"
+
+  - title: Non-Lexical-Lifetimes in nightly
+    bullets:
+      - 'Use in nightly via `#![feature(nll)]`'
+      - '[blog post tutorial](https://santiagopastorino.com/how-to-use-rust-non-lexical-lifetimes-on-nightly/)'
+
+  - title: Notable Crates
+    bullets:
+      - "[cargo-audit](https://crates.io/crates/cargo-audit)"
+      - - Scans your dependencies for known insecure versions
+      - "[YEW](https://github.com/DenisKolodin/yew)"
+      - - Build **client-side** web apps with rust
+        - Compiles your rust code to emscripten
+        - Elm/React-like with it's own VirtualDOM model
+
+  - title: Notable Crates
+    bullets:
+      - "[crossbeam-channel](https://crates.io/crates/crossbeam-channel)"
+      - - Re-implement MPSC channels
+        - Improving ergonomics, flexibility, features, performance
+      - "[cursive](https://github.com/gyscos/Cursive#cursive)"
+      - - text-based interfaces (based on ncurses)
+        - ~30 Widgets; like Box, Button, ProgressBar
+
+  - title: Notable Crates
+    bullets:
+      - "[rustface](https://github.com/atomashpolskiy/rustface#----rustface)"
+      - - Ported C++ face-detection library
+        - 4-8% faster than original!
+      - "[Xray](https://github.com/atom/xray)"
+      - - (New Experiment)
+        - "Beginning of a *new* electron-based text editor"
+        - Looks like firefox's "Servo" for atom-editor
+
+  - title: Crate Updates
+    bullets:
+      - Diesel v1.0
+      - - Popular ORM
+        - Uses the fantastic `bigdecimal` crate
+
+  - title: Crate Updates
+    bullets:
+      - winapi v0.3
+      - - Moved from many `-sys` crates to monolithic
+        - Uses feature-flags to
+        - Not a global namespace
+
+  - title: Rust-Belt-Rust videos
+    bullets:
+      - Videos from 2017 rust-belt-rust now on youtube
+      - "[link](https://www.youtube.com/playlist?list=PLgC1L0fKd7Ul71lD_cImGuMxsZ6J8fa06)"
+
+  - title: Fin.
