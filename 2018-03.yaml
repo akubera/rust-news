@@ -1,0 +1,54 @@
+---
+title: March Rust News {{br}} 🗞
+date: March 8, 2018
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.24 🎉"
+
+  - title: "Rust 1.24"
+    bullets:
+      - "`rustfmt`"
+      - - "Formatting standardization moved to compiler"
+        - "Uninstall the rustfmt installed by cargo"
+        - "`rustup component add rustfmt-preview`"
+
+  - title: "Rust 1.24"
+    bullets:
+      - Incremental Compilation
+      - - Turned on by default
+        - "No longer recompiling your WHOLE project"
+      - "`str::find` 10x faster"
+
+  - title: "Rust 1.24"
+    bullets:
+      - Stabilizations
+      - - "`RefCell::{replace,swap}`"
+        - "`std::sync::atomic::spin_loop_hint`"
+      - Static functions
+      - - "Cell & Atomic `new`"
+        - "`ptr::{null, null_mut}`"
+        - "`integer::{min_value, max_value}`"
+
+  - title: Crate Updates
+    bullets:
+      - Rayon v1.0
+      - |
+        ```
+        use rayon::prelude::*;
+        fn sum_of_squares(input: &[i32]) -> i32 {
+          input.par_iter().map(|&i| i*i).sum()
+        }
+        ```
+
+  - title: On The Web
+    bullets:
+      - "[Closing out an incredible week in Rust](https://aturon.github.io/2018/02/09/amazing-week)"
+      - - "incoming async/await (with borrowing) in Epoch2018"
+      - "[Futures 0.2 is nearing release](https://aturon.github.io/2018/02/27/futures-0-2-RC)"
+      - - expected "within a couple of weeks"
+        - "Aquired AsyncRead/AsyncWrite from tokio-io"
+      - "[Typestates in Rust](https://yoric.github.io/post/rust-typestate)"
+
+  - title: Fin.
