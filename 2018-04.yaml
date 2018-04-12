@@ -1,0 +1,93 @@
+---
+title: April Rust News {{br}} 🗞
+date: April 12, 2018
+author: Andrew Kubera
+
+slides:
+
+  - title: ❤️
+    bullets:
+      - "[Rust: Most Loved Language](https://insights.stackoverflow.com/survey/2018/#most-loved-dreaded-and-wanted)"
+      - "(Stack Overflow Developer Survey)"
+
+  - title: "Rust 1.25 🎉"
+
+  - title: "Rust 1.25"
+    bullets:
+      - "Nested imports"
+      - >
+        ```
+
+        use std::{
+         io::Read,
+         path::{Path, PathBuf}   .
+        };
+
+        ```
+
+  - title: "Rust 1.25"
+    bullets:
+      - "`#[repr(align(16))] struct ...`"
+      - - "controllable struct alignment"
+
+  - title: "Rust 1.25"
+    bullets:
+      - "`time` now in lib*core*"
+      - - "`Duration` available in core"
+        - "and `Duration::{from_secs, from_millis}` now const"
+
+  - title: "Rust 1.25"
+    bullets:
+      - "`std::ptr::NonNull<T>` stable"
+      - - "`Option<NonNull<T>>` == `*mut T`"
+
+  - title: "Rust 1.25 / cargo"
+    bullets:
+      - "`cargo new` defaults to --bin"
+      - "No longer removes 'rust-' or '-rs' prefix/suffix from crate names"
+      - "Faster doc generating by using `cargo check`"
+
+  - title: Crate Updates
+    bullets:
+      - "[Futures 0.2](https://aturon.github.io/2018/04/06/futures2/)"
+      - - "Our goal is to ship async/await in Rust 2018 (roughly by mid-September),
+           and to ship futures 1.0 this year."
+
+  - title: RFCs
+    bullets:
+      - '[Immovable Types](https://github.com/withoutboats/rfcs/blob/pin-and-move/text/0000-pin.md)'
+      - - "pin & move"
+      - '[Async/Await](https://github.com/withoutboats/rfcs/blob/async-await/text/0000-async_await.md)'
+      - - 'Uses pin & move'
+      - '[Delegation](https://github.com/elahn/rfcs/blob/delegation2018/text/0000-delegation.md)'
+      - - "Impl Trait by specifying a member"
+
+  - title: Crates
+    bullets:
+      - "[tui-rs](https://docs.rs/tui/0.2.1/tui/)"
+      - - "Terminal interfaces"
+      - "[ditto](https://github.com/alex-shapiro/ditto)"
+      - - "CRDTs for maps, vecs, sets, text, and JSON"
+
+  - title: Redox
+    bullets:
+      - "[v0.3.5](https://github.com/redox-os/redox/releases/tag/0.3.5) released"
+      - - "New network stack"
+        - "New web browser!"
+
+  - title: On The Web
+    bullets:
+      - "[Async & Await in Rust: a full proposal](https://boats.gitlab.io/blog/post/2018-04-06-async-await-final/)"
+      - - "Merging `Future` & `Executor` traits into std"
+        - "`await!` `async fn`, `async ||`"
+
+  - title: On The Web
+    bullets:
+      - "[Redefining Failure](https://epage.github.io/blog/2018/03/redefining-failure/)"
+      - - "Using the new `failure` crate"
+      - "[Electron + rust](https://keminglabs.com/blog/building-a-fast-electron-app-with-rust/)"
+      - - "Keypress handling < 14ms"
+      - "[GStreamer](https://coaxion.net/blog/2018/04/improving-gstreamer-performance-on-a-high-number-of-network-streams-by-sharing-threads-between-elements-with-rusts-tokio-crate/)"
+      - - "Improve mutli streaming transcoding performance with rust"
+
+  - title: Fin.
