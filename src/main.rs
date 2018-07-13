@@ -4,6 +4,9 @@
 //! Main file for the news server
 //!
 
+#![feature(rust_2018_preview, use_extern_macros)]
+#![warn(rust_2018_idioms)]
+
 #![feature(proc_macro)]
 
 extern crate regex;
