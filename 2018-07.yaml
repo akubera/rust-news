@@ -1,0 +1,58 @@
+---
+title: July Rust News {{br}} 🗞
+date: July 12, 2018
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.27 🎉"
+
+  - title: "Rust 1.27"
+    bullets:
+      - "SIMD in stable"
+      - - "`std::arch` module"
+        - "```
+          v.simd_iter().simd_map(f32s(0.0), |e| {
+            e.abs().sqrt() - f32s(4.0)
+          }
+          ```"
+
+  - title: "Rust 1.27"
+    bullets:
+      - "`dyn Trait`"
+      - - "New syntax to specify generic is Trait rather than Struct "
+        - - "`Box<Foo>` -> `Box<dyn Foo>`"
+          - "`&Foo` -> `&dyn Foo`"
+          - "`&mut Foo` -> `&mut dyn Foo`"
+
+  - title: "Rust 1.27"
+    bullets:
+      - "`#[must_use]` on functions"
+      - - "Warning created if return variable is ignored"
+        - "Added to `clone`, `to_owned`, `collect`, `std::str::replace`"
+      - "Removed 'proc' from reserved keywords"
+
+  - title: "Rust 1.27 - Library Stabilizations"
+    bullets:
+      - "Option::filter"
+      - "String::replace_range"
+      - "Slice: rsplit{,_mut}, swap_with_slice"
+      - "DoubleEndedIterator::{rfind, rfold, try_rfold}"
+      - "Duration::from_{micros,nanos}, subsec_{micros,millis}"
+      - "HashMap::remove_entry"
+
+  - title: "Rust 1.27 - Cargo"
+    bullets:
+      - "`--target-dir` flag"
+      - "`[package]`<br>`autoexamples = true`"
+
+  - title: "Misc"
+    bullets:
+      - "[async/await support merged](https://github.com/rust-lang/rust/pull/51580)"
+      - "`#![feature(async_await,futures_api)]`"
+
+  - title: Conferences
+    bullets:
+      - "Rust-Belt-Rust tickets available!"
+
+  - title: Fin.
