@@ -7,33 +7,22 @@
 #![feature(rust_2018_preview, use_extern_macros)]
 #![warn(rust_2018_idioms)]
 
-#![feature(proc_macro)]
+#![feature(proc_macro_non_items)]
 
-extern crate regex;
-use regex::Regex;
-
-extern crate rouille;
 use rouille::{Request, Response};
 
-extern crate maud;
-use maud::{html, PreEscaped, Render};
+use maud::{html, PreEscaped};
 
-extern crate yaml_rust;
 use yaml_rust::{Yaml, YamlLoader};
 use yaml_rust::yaml::{Array, Hash};
 
-extern crate walkdir;
 use walkdir::WalkDir;
 
 use std::ffi::OsString;
-use std::path::{Path, Display};
+use std::path::Path;
 use std::fs::File;
 use std::io::Read;
 
-extern crate maud_pulldown_cmark;
-use maud_pulldown_cmark::Markdown;
-
-extern crate pulldown_cmark;
 // use pulldown_cmark::html::push_html;
 use pulldown_cmark::Parser;
 
@@ -99,7 +88,7 @@ fn index_page() -> Response
             h1 style="text-align:center;" { "Rust News!" }
             ul {
               @for path in yaml_files {
-                  li (news_link(path.path()))
+                  li { (news_link(path.path())) }
               }
             }
           }
