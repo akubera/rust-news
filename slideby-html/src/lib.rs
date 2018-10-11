@@ -2,7 +2,7 @@
 //!
 //! Generate HTML slides for the news report
 //!
-
+/*
 #![feature(plugin)]
 #![plugin(maud_macros)]
 extern crate maud;
@@ -164,3 +164,4 @@ impl<'a> From<&'a Yaml> for Slideshow {
 
   }
 }
+*/

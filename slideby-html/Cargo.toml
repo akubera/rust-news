@@ -5,11 +5,11 @@ authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 description = "Create a slideshow in html!"
 
 [dependencies]
-maud = "0.16"
-maud_macros = "0.16"
-maud-pulldown-cmark = "0.5"
-yaml-rust = "*"
+# maud = "0.16"
+# maud_macros = "0.16"
+# maud-pulldown-cmark = "0.5"
+# yaml-rust = "*"
+actix-web = "0.7"
 
 [lib]
 name = "slideby_html"
-
