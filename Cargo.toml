@@ -1,5 +1,3 @@
-cargo-features = ["edition"]
-
 [package]
 name = "news"
 version = "2018.8.9"
@@ -9,8 +7,8 @@ edition = "2018"
 [dependencies]
 yaml-rust = "^0.3"
 
-maud = "0.18"
-maud_macros = "0.18"
+maud = "0.19"
+maud_macros = "0.19"
 
 pulldown-cmark = "*"
 maud-pulldown-cmark = "0.5"
