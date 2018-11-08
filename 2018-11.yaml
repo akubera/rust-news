@@ -1,0 +1,114 @@
+---
+title: November News {{br}} 🗞
+date: Nov 8, 2018
+author: Andrew Kubera
+
+slides:
+
+  - title: "Sweson's first Columbus location 🎉"
+    bullets:
+      - '<img height=300 style="position:relative; top: 5px; right: 30px" src="http://swensonsdriveins.com/wp-content/themes/swensons/images/swensons-logo@2x.png">'
+
+  - title: "Rust 1.30 🎉"
+
+  - title: "Rust 1.30 - Features"
+    bullets:
+      - "**Procedural Macros** Stabilized"
+
+  - title: "Rust 1.30 - proc_macro"
+    bullets:
+      - "attribute-like procedural macros"
+      - - |
+          ```rust
+          #[proc_macro_attribute]
+          pub fn your_attr_name(attr: TokenStream,
+                                item: TokenStream)
+            -> TokenStream
+          ```
+      - |
+        ```
+        #[get("/path/to/<route>")]
+        fn handle_route(route: String) -> String
+        { ... }
+        ```
+
+  - title: "Rust 1.30 - proc_macro"
+    bullets:
+      - "function-like procedural macros"
+      - - |
+          ```rust
+          #[proc_macro]
+          pub fn your_macro_name(input: TokenStream)
+            -> TokenStream
+          ```
+      - |
+        ```rust
+        let sql = sql!(SELECT *
+                       FROM posts
+                       WHERE id=1);
+        ```
+
+  - title: "Rust 1.30 - Features"
+    bullets:
+      - "Changes to `use`"
+      - - "You can `use` macros, replacing `#[macro_use]` annotation"
+        - "external crates are imported into scope automatically"
+        - - "No longer must `use` or prefix with `::`"
+        - "new `crate` scope to remove ambiguities "
+        - - "`use crate::foo::bar;`"
+
+  - title: "Rust 1.30 - Features"
+    bullets:
+      - "`#[used]` Attribute"
+      - - Decorate constants to prevent compiler from optimizing them away"
+      - "`#[panic_handler]` Attribute"
+      - - "Specify function to call upon a panic"
+        - "`fn(&PanicInfo) -> !`"
+
+  - title: "Rust 1.30 - Features"
+    bullets:
+      - "Raw Identifiers"
+      - - "`let r#for = true;`"
+        - "Forward compatibility with new version of the language"
+        - "(also macros)"
+      - "Macro visibility matching"
+      - - "`($v:vis $name:ident ...`"
+
+  - title: "Rust 1.30 - Library Stabilizations"
+    bullets:
+      - '`Iterator::find_map`'
+      - - "Applies function to items in container until non-None value found"
+      - "IP-Address constants:"
+      - - |
+          ```rust
+          Ipv4Addr::{BROADCAST, LOCALHOST, UNSPECIFIED}
+          Ipv6Addr::{LOCALHOST, UNSPECIFIED}
+          ```
+
+  - title: "Rust 1.30 - Deprecation"
+    bullets:
+      - "`str::trim_{left,right}`"
+      - - "Replaced by `str::trim_{start,end}`"
+      - "`str::slice_unchecked`"
+      - - "Use `str::get_unchecked(begin..end)`"
+
+  - title: "Rust 1.30 - cargo"
+    bullets:
+      - "Progress Bar!"
+      - "<img src='https://blog.rust-lang.org/images/2018-10-25-Rust-1.30/demo.gif' height=400>"
+
+  - title: "New RFCs"
+    bullets:
+      - "[Structural Records](https://github.com/Centril/rfcs/blob/rfc/structural-records/text/0000-structural-records.md)"
+      - - "Similar to 'named tuples' in other languages"
+      - "[flat_map as an alias for and_then](https://github.com/rust-lang/rfcs/pull/2572)"
+
+  - title: "Crates"
+    bullets:
+
+  - title: "Misc"
+    bullets:
+      - "docs.rs now maintained by rust-lang-nursery"
+
+
+  - title: end.

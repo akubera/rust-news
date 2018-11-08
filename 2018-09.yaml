@@ -1,0 +1,51 @@
+---
+title: September News {{br}} 🗞
+date: Sep 13, 2018
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.29 🎉"
+
+  - title: "Rust 1.29 - Library Stabilizations"
+    bullets:
+      - '`{Arc<T>,Rc<T>}::downcast`'
+      - '`Iterator::flatten`'
+      - 'Compare &str and OsString'
+      - '`std::env::home_dir` deprecated'
+
+  - title: "Rust 1.29 - cargo"
+    bullets:
+      - "`cargo fix`"
+      - - "Automatically fixing warnings in your source"
+      - "`cargo clippy`"
+      - - "Call the linter"
+        - "`rustup install clippy-preview`"
+
+  - title: "Rust 1.29 - cargo"
+    bullets:
+      - "`cargo doc --document-private-items`"
+      - - "Include non-pub items in documentation"
+
+  - title: "Crates"
+    bullets:
+      - "`wasm-bindgen-futures`"
+      - - "maps Rust Futre to JavaScript Promise"
+      - "[Tokio - experimental async / await](https://tokio.rs/blog/2018-08-async-await)"
+      - - "rust-2018 async/await support"
+      - "[cgroups](https://crates.io/crates/cgroups)"
+      - - "manage linux control groups"
+
+  - title: "Crates"
+    bullets:
+      - "Ripgrep 0.10"
+      - - "PCRE2 (`-P/--pcre2`)"
+        - "multi-line search (`-U/--multiline`)"
+        - "JSON output format (`--json`)"
+        - "auto-trim whitespace (`--trim`)"
+      - "[bat](https://github.com/sharkdp/bat)"
+      - - "A 'cat clone with wings'"
+        - "supports syntax highlighting & pagination"
+
+
+  - title: end.

@@ -1,0 +1,82 @@
+---
+title: August News {{br}} 🗞
+# title: Julia 1.0 Release Party
+date: Aug 9, 2018
+author: Andrew Kubera
+
+slides:
+
+  - title: "Julia 1.0 🎉"
+
+
+  - title: "Julia"
+    bullets:
+      - "Math focused language"
+      - "Written atop LLVM JIT"
+      - "`f(x) = 2x+x^2`"
+      - "`f(x, y) = f(x) + f(y)`"
+      - "`f() = 2π`"
+      - 'Builtin package manager `Pkg.add("foo")`'
+
+  - title: "Julia 1.0"
+    bullets:
+      - "Overloadable `.` operator"
+      - "Namedtuples:"
+      - - "`p = (x=1, y=2, z=3)`"
+      - "`start/next/done` iteration now one `iterate`"
+
+  - title: "Rust 1.28 🎉"
+
+  - title: "Rust 1.28"
+    bullets:
+      - "`#[global_allocator]` attribute"
+      - - "Set object used to allocate memory"
+        - "Use for optimizations"
+        - "Implement `GlobalAlloc` trait"
+
+      - 'Custom error message for `format!("{_foo}", _foo=...)`'
+
+  - title: "Rust 1.28"
+    bullets:
+      - "Unit tests (`#[test]`) can now return `Result<(), Debug>`"
+      - "`macro_rules!` can now match on `:lifetime` input"
+
+  - title: "Rust 1.28 - Library Stabilizations"
+    bullets:
+      - "NonZero unsigned integers"
+      - - "NonZeroU8, NonZeroU16, ...etc"
+        - "Optimized Option<NonZeroU8>"
+
+      - "Iterator::step_by"
+      - "alloc::{alloc, dealloc, realloc, Layout, System}"
+
+  - title: "Rust 1.28 - Library Stabilizations"
+    bullets:
+      - "`{Any + Send + Sync}::{is, downcast_ref}`"
+      - - |
+            ```
+            fn is_string(s: &(Any + Send + Sync)) {
+              if s.is::<String>() {
+                println!("It's a string!");
+              } else {
+                println!("Not a string...");
+              }
+            }
+            ```
+  - title: "Rust 1.28 - Cargo"
+    bullets:
+      - "Cannot publish crates with build scripts that modify `src/`"
+      - - "You should write files to `$OUT_DIR`"
+        - 'Do `include!(concat!(env!("OUT_DIR"), "/newfile.rs"));`'
+
+  - title: "Crates"
+    bullets:
+      - "**futures v0.3.0-alpha.2** released (as `futures-preview`)"
+      - - "`#![feature(futures_api)"
+      - "new **js-sys** crate with bindings to javascript node? "
+      - "[wayland-rs](https://smithay.github.io/wayland-rs-v-0-21.html)"
+      - - "Pure Rust implementation of wayland protocol (replace X11)"
+      - "[tizen](https://github.com/NerdyPepper/taizen)"
+      - - "Terminal wikipedia browser"
+
+  - title: end.
