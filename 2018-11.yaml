@@ -17,30 +17,13 @@ slides:
 
   - title: "Rust 1.30 - proc_macro"
     bullets:
-      - "attribute-like procedural macros"
-      - - |
-          ```rust
-          #[proc_macro_attribute]
-          pub fn your_attr_name(attr: TokenStream,
-                                item: TokenStream)
-            -> TokenStream
-          ```
-      - |
-        ```
-        #[get("/path/to/<route>")]
-        fn handle_route(route: String) -> String
-        { ... }
-        ```
-
-  - title: "Rust 1.30 - proc_macro"
-    bullets:
       - "function-like procedural macros"
-      - - |
-          ```rust
-          #[proc_macro]
-          pub fn your_macro_name(input: TokenStream)
-            -> TokenStream
-          ```
+      - |
+        ```rust
+        #[proc_macro]
+        pub fn your_macro_name(input: TokenStream)
+          -> TokenStream
+        ```
       - |
         ```rust
         let sql = sql!(SELECT *
@@ -48,19 +31,43 @@ slides:
                        WHERE id=1);
         ```
 
+  - title: "Rust 1.30 - proc_macro_attribute"
+    bullets:
+      - "attribute-like procedural macros"
+      - |
+        ```rust
+        #[proc_macro_attribute]
+        pub fn your_attr_name(attr: TokenStream,
+                              item: TokenStream)
+          -> TokenStream
+        ```
+      - |
+        ```
+        #[get("/path/to/<route>")]
+        fn handle_route(route: String) -> String
+        { ... }
+        ```
+
   - title: "Rust 1.30 - Features"
     bullets:
-      - "Changes to `use`"
-      - - "You can `use` macros, replacing `#[macro_use]` annotation"
-        - "external crates are imported into scope automatically"
-        - - "No longer must `use` or prefix with `::`"
-        - "new `crate` scope to remove ambiguities "
-        - - "`use crate::foo::bar;`"
+      - "You can now import macros with `use`"
+      - - "import like structs & traits"
+        - "replacing `#[macro_use]` annotation"
+      - "*external crates* are imported into prelude automatically"
+      - - "No longer must `use` or prefix with `::`"
+
+  - title: "Rust 1.30 - Features"
+    bullets:
+      - "new `crate` scope to remove ambiguities "
+      - - "`use crate::foomodule::bar;`"
 
   - title: "Rust 1.30 - Features"
     bullets:
       - "`#[used]` Attribute"
-      - - Decorate constants to prevent compiler from optimizing them away"
+      - - "Decorate constants to prevent compiler from optimizing them away"
+
+  - title: "Rust 1.30 - Features"
+    bullets:
       - "`#[panic_handler]` Attribute"
       - - "Specify function to call upon a panic"
         - "`fn(&PanicInfo) -> !`"
@@ -69,10 +76,19 @@ slides:
     bullets:
       - "Raw Identifiers"
       - - "`let r#for = true;`"
-        - "Forward compatibility with new version of the language"
+        - "Forward/Backward compatibility with new version of the language"
         - "(also macros)"
-      - "Macro visibility matching"
-      - - "`($v:vis $name:ident ...`"
+
+  - title: "Rust 1.30 - Features"
+    bullets:
+      - "<img src='https://tinyurl.com/ybee7pe6'>"
+
+  - title: "Rust 1.30 - Features"
+    bullets:
+      - "Visibility-specifier in macro matching"
+      - - "`($v:vis $name:ident) -> ...`"
+      - "Use literals in attributes"
+      - - '`#[attr("true")]` -> `#[attr(true)]`'
 
   - title: "Rust 1.30 - Library Stabilizations"
     bullets:
@@ -102,13 +118,28 @@ slides:
       - "[Structural Records](https://github.com/Centril/rfcs/blob/rfc/structural-records/text/0000-structural-records.md)"
       - - "Similar to 'named tuples' in other languages"
       - "[flat_map as an alias for and_then](https://github.com/rust-lang/rfcs/pull/2572)"
+      - - "Is duplication in the name of clarity ok?"
 
   - title: "Crates"
     bullets:
+      - "[shifgrethor](https://boats.gitlab.io/blog/post/shifgrethor-i/)"
+      - - "Withoutboats' experimental tracing garbage collector"
+      - "[mundane](https://crates.io/crates/mundane)"
+      - - 'Cryptography library backed by BoringSSL (openssl fork)'
+        - '"difficult to misuse, ergonomic, and performant (in that order)"'
+
+  - title: "Blogs"
+    bullets:
+      - "[Performance impact of NLL reduced](https://blog.mozilla.org/nnethercote/2018/11/06/how-to-speed-up-the-rust-compiler-in-2018-nll-edition/)"
+      - "[After NLL: Interprocedural conflicts](http://smallcultfollowing.com/babysteps/blog/2018/11/01/after-nll-interprocedural-conflicts/)"
+      - "[Authentication Microservice Example](https://hgill.io/posts/auth-microservice-rust-actix-web-diesel-complete-tutorial-part-1/)"
 
   - title: "Misc"
     bullets:
       - "docs.rs now maintained by rust-lang-nursery"
 
+  - title: "[Map](https://www.google.com/maps/dir/Mutually+Human,+North+5th+Street+%23300,+Columbus,+OH/Swensons+Drive-In+Restaurants,+7490+Sawmill+Rd,+Dublin,+OH+43016/@40.0428604,-83.1510493,11z/data=!4m14!4m13!1m5!1m1!1s0x88388f2c5a31dad1:0xe1abf9ff971dc7bf!2m2!1d-82.9962279!2d39.9679081!1m5!1m1!1s0x8838ede3be87bff7:0x2f67e0940020b1a0!2m2!1d-83.0899741!2d40.119695!3e0)"
+
+  - title: Thanks to Mutually Human for hosting and supporting the user group 👏
 
   - title: end.
