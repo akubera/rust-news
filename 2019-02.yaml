@@ -1,0 +1,107 @@
+---
+title: February News {{br}} ♥ 🗞
+date: Feb 14, 2019
+author: Andrew Kubera
+
+slides:
+
+  - title: "Second Columbus Swensons Location <br> - Polaris -"
+    bullets:
+      - '![swensons logo](http://swensonsdriveins.com/wp-content/themes/swensons/images/swensons-logo@2x.png)'
+
+  - title: "Rust 1.32 🎉"
+
+  - title: "Rust 1.32"
+    bullets:
+      - 'dbg!'
+      - - 'Replace `println!("{:?}", x)` <br> with `dbg!(x)`'
+        - "Writes to stderr"
+        - "Includes line number and expression!"
+        - "Returns value inside"
+
+  - title: "Rust 1.32 - dbg!"
+    bullets:
+      - |
+        ```rust
+        fn main() {
+            let a = 5;
+            let b = 6;
+            let _c = dbg!(a + b);
+        }
+        ```
+
+      - '`[src/main.rs:4] a + b = 11`'
+
+  - title: "Rust 1.32 - dbg!"
+    bullets:
+      - |
+        ```rust
+        fn main() {
+            let a = 5.2f64;
+            let b = 6.0f64;
+            let _c = dbg!(dbg!(a.cos()) + dbg!(b.sin()));
+        }
+        ```
+      - "[link](https://play.rust-lang.org/?version=stable&mode=release&edition=2018&gist=aa08063d3c0559066e2737a3b1261ece)"
+
+
+  - title: "Rust 1.32"
+    bullets:
+      - 'Replace jemalloc'
+      - - "Static 300kb in every rust binary"
+        - "Rust 1.28 had switchable allocators"
+        - "Get it back with `jemallocator` crate"
+
+  - title: "Rust 1.32 - Uniform Paths"
+    bullets:
+      - 'Can now `use` enums, structs, etc in current crate without leading `self`'
+      - |
+        ```rust
+        enum Color { Red, Green, Blue }
+
+        use Color::*;
+        ```
+
+  - title: "Rust 1.32"
+    bullets:
+      - 'Macro Literal Matching'
+      - - |
+          ```
+          macro_rules! m {
+              ($lt:literal) => {};
+          }
+          ```
+        - "Match literal of any type"
+
+      - '`?` Matching'
+      - - "Zero or one values of match"
+
+  - title: "Rust 1.32 - Stabalizations"
+    bullets:
+      - "Integer serialization"
+      - - "`{from,to}_{be,le,ne}_bytes`"
+      - "PathBuf now implements FromStr"
+      - "Box<[T]> now implements FromIterator<T>"
+
+  - title: "Rust 1.32 - Cargo"
+    bullets:
+      - "`cargo c` == `cargo check`"
+
+  - title: "Notable Crates"
+    bullets:
+      - "[proc-macro-rules](https://www.ncameron.org/blog/proc-macro-rules/)"
+      - - "macro_rules-like pattern matching for procedural macros"
+      - "[Criterion](https://github.com/bheisler/criterion.rs)"
+      - - "'Statistics-driven benchmarking library for Rust'"
+      - "[log-derive](https://crates.io/crates/log-derive)"
+      - - "Auto generates log output for functions"
+
+  - title: "Projects"
+    bullets:
+      - "[Rust Python](https://github.com/RustPython/RustPython)"
+      - - "Full python environment implemented in Rust"
+
+  - title: "On the Web"
+    bullets:
+      - "[match vs lookup-table](https://kevinlynagh.com/notes/match-vs-lookup/)"
+      - "[create .deb archive with rust](https://gill.net.in/posts/creating-web-server-deb-binary-with-rust)"
