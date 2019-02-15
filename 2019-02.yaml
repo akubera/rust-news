@@ -73,19 +73,31 @@ slides:
           ```
         - "Match literal of any type"
 
-      - '`?` Matching'
-      - - "Zero or one values of match"
+      - "'?' Matching"
+      - - "Zero or one repetitions of match"
 
-  - title: "Rust 1.32 - Stabalizations"
+  - title: "Rust 1.32 - Stabilizations"
     bullets:
       - "Integer serialization"
       - - "`{from,to}_{be,le,ne}_bytes`"
-      - "PathBuf now implements FromStr"
-      - "Box<[T]> now implements FromIterator<T>"
+      - "`PathBuf` implements `FromStr`"
+      - "`Box<[T]>` implements `FromIterator<T>`"
+
+  - title: "Rust 1.32"
+    bullets:
+      - "Many functions now 'const'"
+      - - "`Ipv6Addr::new`"
+        - "`iter::empty`"
+        - "`*::as_ptr`"
+        - 'Duration::{as_secs,subsec_}'
 
   - title: "Rust 1.32 - Cargo"
     bullets:
       - "`cargo c` == `cargo check`"
+
+  - title: ""
+    bullets:
+      - '![](https://cdn.onlyinyourstate.com/wp-content/uploads/2018/04/22449714_10159425291910111_6135647616873209406_n-700x520.jpg)'
 
   - title: "Notable Crates"
     bullets:
@@ -105,3 +117,12 @@ slides:
     bullets:
       - "[match vs lookup-table](https://kevinlynagh.com/notes/match-vs-lookup/)"
       - "[create .deb archive with rust](https://gill.net.in/posts/creating-web-server-deb-binary-with-rust)"
+      - "[crossbeam](https://stjepang.github.io/2019/01/29/lock-free-rust-crossbeam-in-2019.html)"
+
+  - title: ""
+    bullets:
+      - '![](https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia-cdn.tripadvisor.com%2Fmedia%2Fphoto-s%2F0d%2F25%2F19%2F27%2Fswensons-north-akron.jpg)'
+      - "[Columbus Underground](https://www.columbusunderground.com/restaurant-review-swensons-ma1)"
+      - - 'Galley Boy -- "It’s definitely okay"'
+
+  - title: Thank You
