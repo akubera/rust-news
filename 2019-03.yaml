@@ -1,0 +1,85 @@
+---
+title: March News {{br}} 🗞
+date: Mar 14, 2019
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.33 🎉"
+
+  - title: "Rust 1.33 - Pinning"
+    bullets:
+      - '`std::pin::Pin<P>`'
+      - 'Guaranteed not to move memory locations'
+      - 'Required for async/await'
+      - '(I assume additional optimizations)'
+
+  - title: "Rust 1.33 - const fn"
+    bullets:
+      - 'Can now use `let` statements'
+      - 'Call `const unsafe fn`'
+
+  - title: "Rust 1.33"
+    bullets:
+      - "`import as _`"
+      - "import a trait's impls without name collision"
+      - |
+        ```rust
+        use std::io::Read as _;
+
+        // Allowed as there is only one `Read` in the module.
+        pub trait Read {}
+        ```
+
+  - title: "Rust 1.33 - Stabilizations"
+    bullets:
+      - "`const-ify:"
+      - - '`overflowing_{add, sub, mul, shl, shr}`'
+        - '`wrapping_{add, sub, mul, shl, shr}`'
+        - '`rotate_{left,right}`'
+        - '`is_{positive,negative}`'
+
+  - title: "Rust 1.33 - Stabilizations"
+    bullets:
+      - "`Duration::as_{millis,micros,nanos}`"
+      - "`Vec::resize_with`"
+      - "`{Option,Result}::transpose`"
+
+
+  - title: "Rust 1.33 - Cargo"
+    bullets:
+      - If source files changes before compilation finished,
+        it wouldn't trigger rebuild
+      - - (i.e. compare timestamps with output files, not intermediate)
+      - Not the case anymore
+
+  - title: "Rust 1.33 - Crates.io"
+    bullets:
+      - "You must verify your email to publish"
+
+  - title: "Notable Crates"
+    bullets:
+      - "[multi_try](https://github.com/JoshMcguigan/multi_try)"
+      - - "Unpack multiple `Result`s into tuple of values"
+        - "Trait `MultiTry` with `and_try` method"
+
+      - "[validator](https://github.com/Keats/validator)"
+      - - "Decorate members with `validate` proc_macros "
+        - "get automatic method `validate() -> Result<(), ValidationError>`"
+
+  - title: "Projects"
+    bullets:
+      - "[Remacs](https://github.com/remacs/remacs)"
+      - - "Reimplentation of emacs in rust"
+      - "[zemeroth](https://ozkriff.itch.io/zemeroth)"
+      - - "Zemeroth is a turn-based hexagonal tactical game written in Rust."
+
+  - title: "On the Web"
+    bullets:
+      - "[introducing @now/rust](https://zeit.co/blog/introducing-now-rust)"
+      - - 'FaaS ("serverless") support for rust'
+
+      - "[Oxide: The Essense of Rust](https://arxiv.org/abs/1903.00982)"
+      - - "Formalized programming language close to source-level Rust"
+
+  - title: Done
