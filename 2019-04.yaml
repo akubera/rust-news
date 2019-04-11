@@ -1,0 +1,163 @@
+---
+title: April Rust News {{br}} 🗞
+date: April 11, 2019
+author: Andrew Kubera
+
+slides:
+
+  - title: ❤️
+    bullets:
+      - "[Rust: Most Loved Language](https://insights.stackoverflow.com/survey/2019/#most-loved-dreaded-and-wanted)"
+      - "(Stack Overflow Developer Survey)"
+      - "4th year in a row"
+
+  - title: "Rust 1.34 🎉"
+
+  - title: "Rust 1.34"
+    bullets:
+      - "Procedural Macros"
+      - - "Now accepts arbitrary tokens"
+        - "`#[attr($tokens)]`"
+        - "Example:"
+        - - "`#[range(0..10)]`"
+          - 'Instead of `#[range("0..10")]`'
+
+  - title: "Rust 1.34"
+    bullets:
+      - "`extern crate self as foo;`"
+      - |
+        ```rust
+        // Adds local crate to extern prelude as `serde`
+        extern crate self as serde;                                                   //
+
+        mod foo { ... }
+
+        // Anywhere in this crate
+        use serde::foo; // OK
+        ::serde::foo; // OK
+        ```
+
+  - title: "Rust 1.34"
+    bullets:
+      - "LLVM Link Time Optimizations (linker plugin)"
+      - - "`rustc -C linker-plugin-lto`"
+        - "LTO across C/C++ FFI boundaries"
+
+  - title: "Rust 1.34"
+    bullets:
+      - "`str::{trim, trim_matches, trim_start, trim_end, trim_{start,end}_matches}`"
+      - - "Add `#[must_use]` to"
+        - "Produces warning if result unused"
+      - "All numeric types:"
+      - - "`checked_pow`, `saturating_pow`, `wrapping_pow`, `overflowing_pow`"
+
+  - title: "Rust 1.34"
+    bullets:
+      - "`TryFrom` & `TryInto` Stabilized"
+      - "`T::try_from() -> Result<T, T::Error>`"
+      - "Use new `Infallible` type to indicate compatible types"
+      - - "`u32::try_from(u8) -> Result<u32, Infallible>`"
+        - "Auto-implemented by `From`"
+
+  - title: "Rust 1.34"
+    bullets:
+      - "`fn Command::before_exec` deprecated"
+      - - "Should have been `unsafe`"
+        - "code to run before a `fork`"
+        - "Didn't check ownership of values?"
+        - "Use unsafe `pre_exec`"
+
+  - title: "Rust 1.34"
+    bullets:
+      - "Briefer deprecation indicator:"
+      - |
+        `#[deprecated(note="reason")]`
+
+        ->
+
+        `#[deprecated = "reason"]`
+
+  - title: "Rust 1.34 - Stabilizations"
+    bullets:
+      - "Atomic integers available `AtomicU8` - `AtomicU64`"
+      - "Signed NonZero types: `NonZeroI8`"
+
+  - title: "Rust 1.34"
+    bullets:
+      - "Use of `?` is allowed in doctests:"
+      - |
+        ```rust
+        /// ```rust
+        /// use std::io;
+        /// let mut input = String::new();
+        /// io::stdin().read_line(&mut input)?;         //
+        /// # Ok::<(), io:Error>(())
+        /// ```
+        fn my_func() {}
+        ```
+
+  - title: "Rust 1.34 - Stabilizations"
+    bullets:
+      - "`iter::from_fn`"
+      - - "`FnMu -> Option<T>`"
+        - "`for item in iter::from_fn(|| vec.pop()) { }`"
+
+  - title: "Rust 1.34 - Stabilizations"
+    bullets:
+      - "`iter::successors`"
+      - - "Iterator where next item is computed from previous"
+        - |
+          ```rust
+          let powers_of_10 = successors(Some(1_u16),
+                                        |n| n.checked_mul(10));
+          ```
+
+  - title: "Rust 1.34 - Stabilizations"
+    bullets:
+      - "`str::escape_{debug,default,unicode}`"
+      - - "Iterator changing '\\\\' to '\\\\\\\\'"
+        - "_default: unicode characters -> \\u{}"
+        - "_unicode: *ALL* characters -> \\u{}"
+        - '`println!("{}", s.escape_debug());`'
+
+  - title: "Rust 1.34 - Stabilizations"
+    bullets:
+      - "`str::split_ascii_whitespace`"
+      - - "Splits on ONLY ascii whitespace"
+        - "Unicode whitespace is standard `split_whitespace`"
+
+  - title: "Rust 1.34 - Stabilizations"
+    bullets:
+      - "`Any::type_id` `Error::type_id`"
+      - "`time::{Instant, SystemTime}::checked_{add,sub}`"
+      - "`slice::sort_by_cached_key`"
+      - - "sorts slice by calling key-function"
+        - "only called once per element"
+
+  - title: "Rust 1.34 / cargo"
+    bullets:
+      - "Allows alternative registries (not only crates.io)"
+      - - "`.cargo/config` add `[registries]` section"
+        - 'add `{..., registry = "my-registry"}` to dependency'
+
+  - title: Crates
+    bullets:
+      - "[sendfd](https://docs.rs/sendfd/0.3.0/sendfd/index.html)"
+      - - "Send a file-descriptor to another process."
+      - "[parking lot](https://crates.io/crates/parking_lot)"
+      - - "Faster mutex"
+
+  - title: Veloren
+    bullets:
+      - "[An open world, open source voxel RPG](https://github.com/veloren/veloren)"
+
+  - title: on the web
+    bullets:
+    - "Rust 2018 Updates to the [linked-list](https://rust-unofficial.github.io/too-many-lists/) guide"
+
+  - title: First Columbus Pizza Week (22-27)
+    bullets:
+      - "[Clintonville](https://eat614.com/location/827/view)"
+      - Tuesday 23rd?
+
+  - title: Fin.
