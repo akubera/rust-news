@@ -1,0 +1,84 @@
+---
+title: June Rust News {{br}} 🗞
+date: June 13, 2019
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.35 🎉"
+
+  - title: "Rust 1.35"
+    bullets:
+      - "`dbg!()` without arguments prints line number"
+
+  - title: "Rust 1.35"
+    bullets:
+      - "`{f32, f64}::copysign`"
+      - |
+        ```rust
+        assert_eq!(
+          3.5_f32.copysign(-0.42),
+          -3.5);
+        ```
+
+  - title: "Rust 1.35"
+    bullets:
+      - "`Range` structs have `contains()`"
+      - - Range
+        - RangeFrom
+        - RangeTo
+        - RangeInclusive
+        - RangeToInclusive
+
+  - title: "Rust 1.35"
+    bullets:
+      - "`ptr::hash`"
+      - "Get hash of pointer address"
+      - - "(not object value)"
+
+
+  - title: "Rust 1.35"
+    bullets:
+      - "`Option<&T>::copied()`"
+      - - "Copy the contents of an Option"
+        - "Always had `cloned` method"
+        - "Adds ability to restrict to (efficient) copy-only types"
+
+  - title: "Rust 1.35"
+    bullets:
+      - "`Fn,FnMut,FnOnce` closure traits implemented for `Box<dyn Fn*>`"
+      - - "Previously boxed closures weren't just *callable*"
+        - - "Had to use experimental `FnBox` trait"
+          - "Problem for APIs expecting Fn..."
+
+  - title: "Rust 1.35"
+    bullets:
+      - "Now they can be used as expected"
+      - |
+        ```rust
+        fn foo(x: Box<dyn FnOnce()>) {
+            x()
+        }
+        ```
+
+  - title: "Rust 1.35"
+    bullets:
+      - "Accomplished with `unsized locals` [RFC1909](https://github.com/rust-lang/rfcs/blob/master/text/1909-unsized-rvalues.md)"
+      - "Implemented using `alloca`"
+      - "`man alloca`"
+      - - "The alloca() function allocates size bytes of space in the stack frame of the caller"
+
+  - title: "Rust 1.35"
+    bullets:
+      - 'Coercing closures to unsafe fn pointers'
+      - |
+        ```rust
+        unsafe fn call_unsafe_fn_ptr(f: unsafe fn()) { f() }
+
+        main() {
+          unsafe { call_unsafe_fn_ptr(
+                    || { dbg!(); }   ); }
+        }
+        ```
+
+  - title: Fin.
