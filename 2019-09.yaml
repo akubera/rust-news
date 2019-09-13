@@ -1,0 +1,117 @@
+---
+title: September Rust News {{br}} 🗞
+date: Sep 12, 2019
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.37 🎉"
+
+  - title: "Rust 1.37"
+    bullets:
+      - "Access enum variants thr"ough type aliases"
+      - - "`type ByteOption = Option<u8>;`"
+        - "`ByteOption::Some(v)`"
+      - "Can Use `Self::Variant` now"
+
+  - title: "Rust 1.37"
+    bullets:
+      - "Specify enum alignment `#[repr(align(N))]`"
+
+  - title: "Rust 1.37"
+    bullets:
+      - "Unnamed `const` items in macros [(link)](https://blog.rust-lang.org/2019/08/15/Rust-1.37.0.html#using-unnamed-const-items-for-macros)"
+      - - "Name a constant `_` in macro to avoid name collisions"
+
+  - title: "Rust 1.37"
+    bullets:
+      - "Profile-guided optimization"
+      - "`rustc -C profile-generate`"
+      - - "Build instrumentation into executable"
+      - "`rustc -C profile-use`"
+      - - "Combine with optimizations based on runtime"
+
+  - title: "Rust 1.37 - Cargo.toml"
+    bullets:
+      - "New option: `package.default-run`"
+      - - "Set default binary to use with `cargo run`"
+
+  - title: "Rust 1.37"
+    bullets:
+      - "`cargo vendor`"
+      - - "Fetches all dependencies, stores in `vendor/`"
+        - "You can modify the sources"
+        - "*Was* in external command, now builtin"
+
+  - title: "Rust 1.37 - Stabilizations"
+    bullets:
+      - "`{BufReader,BufWriter}::buffer`"
+      - - "Access slice of buffer"
+      - "`Option::xor(Option)`"
+
+  - title: "Rust 1.37 - Stabilizations"
+    bullets:
+      - "`{i,u}{8,16,32,64,128,size}::reverse_bits`"
+
+  - title: "Rust 1.37 - Stabilizations"
+    bullets:
+      - "`Cell::from_mut`"
+      - - "`pub fn from_mut(t: &mut T) -> &Cell<T>`"
+      - "`Cell::as_slice_of_cells`"
+      - - "Returns a `&[Cell<T>]` from a `&Cell<[T]>`"
+
+  - title: "Rust 1.37 - Stabilizations"
+    bullets:
+      - "`slice::copy_within`"
+      - - "Copies elements from one part of the slice to another part of itself, using a memmove"
+        - |
+          ```
+          let mut bytes = *b"Hello, World!";
+          bytes.copy_within(1..5, 8);
+          assert_eq!(&bytes, b"Hello, Wello!");
+          ```
+
+  - title: "Rust 1.37 - Stabilizations"
+    bullets:
+      - "`DoubleEndedIterator::nth_back`"
+      - - "n'th element from back of the collection"
+
+  - title: "Rust 1.37"
+    bullets:
+      - "Using `...` for inclusive range patterns will now warn"
+      - - "Update to `..=` syntax for inclusive ranges"
+
+  - title: "Crates"
+    bullets:
+      - "[async-std](https://docs.rs/async-std/0.99.5/async_std)"
+      - - "Async version of std"
+        - "`std::{fs,io,net,stream,...}`"
+        - '`use async_std::fs::File;`'
+
+  - title: "Crates"
+    bullets:
+      - "[cargo-udeps](https://crates.io/crates/cargo-udeps)"
+      - - "Add `udeps` cargo command to find unused dependencies"
+
+  - title: "Around the Web"
+    bullets:
+      - "[network driver language comparison](https://github.com/ixy-languages/ixy-languages)"
+      - - "Rust does pretty good"
+      - "[Improvement to the compile time of a crate](http://antoyo.ml/compilation-time-dependencies)"
+
+  - title: "Around the Web"
+    bullets:
+      - "[GUI ecosystem overview](https://gitlab.com/z0mbie42/rust_gui_ecosystem_overview)"
+      - "[Thoughts on Rust bloat](https://raphlinus.github.io/rust/2019/08/21/rust-bloat.html)"
+
+  - title: "Around the Web"
+    bullets:
+      - "[Linux Kernel Modules in Rust?](https://lwn.net/Articles/797828/)"
+
+  - title: "Around the Web"
+    bullets:
+      - "[Nu-shell](http://www.jonathanturner.org/2019/08/introducing-nushell.html)"
+      - - "'Structured pipes' a la powershell"
+        - "(anushell)"
+
+  - title: End.
