@@ -3,18 +3,19 @@ name = "news"
 version = "2018.8.9"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 edition = "2018"
+cargo-features = ["edition"]
 
 [dependencies]
-yaml-rust = "^0.3"
+yaml-rust = "0.4.3"
 
-maud = "0.19"
-maud_macros = "0.19"
+maud = "0.21"
+maud_macros = "0.21"
 
-pulldown-cmark = "*"
+pulldown-cmark = "0.5"
 maud-pulldown-cmark = "0.5"
 
 time = "*"
 
-rouille = "1.0.3"
+rouille = "3.0.0"
 walkdir = "1"
 regex = "0.1.80"
