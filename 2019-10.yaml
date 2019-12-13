@@ -1,0 +1,127 @@
+---
+title: October Rust News {{br}} 🗞
+date: Oct 10, 2019
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.38 🎉"
+
+  - title: "Rust 1.38"
+    bullets:
+      - "Deprecated macros"
+      - - "Decorate with `#[deprecated]`"
+
+  - title: "Rust 1.38"
+    bullets:
+      - "`std::any::type_name`"
+      - - "Get concrete name of an object"
+        - "Only fo debugging"
+        - "Format not guaranteed/unique"
+
+  - title: "Rust 1.38"
+    bullets:
+      - '`slice::{concat, connect, join}`'
+      - - "Accepts `&[T]` in addition to `&T`"
+
+  - title: "Rust 1.38"
+    bullets:
+      - '`*const T` and `*mut T`'
+      - - "implement `marker::Unpin`"
+        - "\"Moving the pointer doesn't move the pointed-to value, so this is safe\""
+
+  - title: "Rust 1.38"
+    bullets:
+      - '`Arc<[T]>` and `Rc<[T]>`'
+      - - "Implement `FromIterator<T>`"
+
+  - title: "Rust 1.38 - Stabilizations"
+    bullets:
+      - '`<*const T>::cast -> *U` and `<*mut T>::cast -> *U`'
+      - 'Casting!'
+
+  - title: "Rust 1.38 - Stabilizations"
+    bullets:
+      - '`Duration::as_secs_{f32,f64}`'
+      - '`Duration::mul_{f32,f64}`'
+      - '`Duration::div_{f32,f64}`'
+      - '`Duration::from_secs_{f32,f64}`'
+
+  - title: "Rust 1.38 - Stabilizations"
+    bullets:
+      - '`{ints}::div_euclid`'
+      - - 'Computes the integer `n` such that `self = n * rhs + self.rem_euclid(rhs)`'
+      - '`{ints}::rem_euclid`'
+      - - 'Computes the non-negative integer `r` such that `self = rhs * self.div_euclid(rhs) + r`'
+      - '[playground](https://play.rust-lang.org/?version=stable&mode=debug&edition=2018&gist=9a9a4d2d2b64e236933d93ef7ea6010e)'
+
+  - title: "Rust 1.38 - rustc"
+    bullets:
+      - "Pipelined compilation"
+      - - "Start building crates earlier: when metadata is available"
+        - "10-20% compile time improvement (for some dependency graphs)"
+
+  - title: "Rust 1.38"
+    bullets:
+      - "Add linting for `mem::{uninitialized, zeroed}`"
+      - - "Can lead to undefined behavior for some types"
+        - "Use `MaybeUninit<T>` instead"
+
+  - title: "Rust 1.38 (nightly) - Cargo"
+    bullets:
+      - "New `Cargo.lock` format for better source-control merging"
+      - "Add `--message-format=json-diagnostic-short` for json output"
+
+  - title: "Rust *1.39* (beta)"
+    bullets:
+      - "[async-await syntax now in beta](https://blog.rust-lang.org/2019/09/30/Async-await-hits-beta.html) 🎉"
+      - "Support in alpha versions of crates:"
+      - - "`tokio`, `futures-rs`, `reqwest`, `hyper`"
+      - "`wasm-bindgen-futures`"
+      - - "Bridge futures to JavaScript promises"
+
+  - title: "Rust Projects"
+    bullets:
+      - '[Oreboot](https://osfc.io/uploads/talk/paper/23/Oreboot.pdf) = Coreboot - C'
+      - 'Rust boot firmware'
+      - 'Fork of Coreboot'
+      - 'GPLv2'
+
+  - title: "Rust Projects"
+    bullets:
+      - "[Weld](https://notamonadtutorial.com/weld-accelerating-numpy-scikit-and-pandas-as-much-as-100x-with-rust-and-llvm-12ec1c630a1)"
+      - - "Bare-metal performance for applications that rely on existing high-level APIs such as NumPy and Pandas"
+
+  - title: "Rust Projects"
+    bullets:
+      - "[Rx](https://cloudhead.io/rx/)"
+      - - "a modern and extensible pixel editor"
+
+  - title: "Rust Projects"
+    bullets:
+      - "[Rx](https://cloudhead.io/rx/)"
+      - - "a modern and extensible pixel editor"
+
+  - title: "Around the Web"
+    bullets:
+      - "[Plugins In Rust](http://adventures.michaelfbryan.com/posts/plugins-in-rust/)"
+      - - "Load dynamic libraries - tutorial (DIY)"
+        - "(Not a crate)"
+
+  - title: "Around the Web"
+    bullets:
+      - "[cargo audit](https://blog.rust-lang.org/inside-rust/2019/10/03/Keeping-secure-with-cargo-audit-0.9.html)"
+      - - "Check your dependencies against publicly known vulnerabilities"
+
+  - title: "Around the Web"
+    bullets:
+      - "[Accurate mental model for Rust's reference types](https://docs.rs/dtolnay/0.0.6/dtolnay/macro._02__reference_types.html)"
+      - "[Fighting the Async fragmentation](https://vorner.github.io/2019/09/29/figthting-the-async-fragmentation.html)"
+
+  - title: "Around the Web"
+    bullets:
+      - "[Cross-language LTO](http://blog.llvm.org/2019/09/closing-gap-cross-language-lto-between.html)"
+      - - "Link Time Optimization possible with Clang-8"
+        - "Firefox has been released with this"
+
+  - title: End.

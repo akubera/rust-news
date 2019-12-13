@@ -1,0 +1,74 @@
+---
+title: December Rust News {{br}} 🗞
+date: Dec 12, 2019
+author: Andrew Kubera
+
+slides:
+
+  - title: "State Of Rust Survey"
+    bullets:
+      - "https://blog.rust-lang.org/2019/12/03/survey-launch.html"
+      - "Answer questions about Rust"
+
+  - title: "How to RiiR"
+    bullets:
+      - "http://adventures.michaelfbryan.com/posts/how-to-riir/index.html"
+
+  - title: "GCC-Rust"
+    bullets:
+      - "https://github.com/sapir/gcc-rust/tree/rust"
+
+  - title: "Tokio 0.2"
+    bullets:
+      - "https://tokio.rs/blog/2019-11-tokio-0-2/"
+      - 'Ground up rework of Tokio'
+      - 'Uses async/await'
+      - '"much faster" scheduler'
+      - "Broken into components to be lighter weight"
+
+  - title: "Tokio 0.2"
+    bullets:
+      - "program entry point can now be done with a proc macro"
+      - |
+        ```
+        #[tokio::main]
+        async fn main() {
+            println!("Hello from Tokio!");
+        }
+        ```
+
+  - title: "Rust Crash Course"
+    bullets:
+      - "https://www.snoyman.com/blog/2019/12/rust-crash-course-09-tokio-0-2"
+
+  - title: "hyper v0.13.0"
+    bullets:
+      - "https://seanmonstar.com/post/189594157852/hyper-v013"
+      - "HTTP library"
+      - "Now supports async/await & tokio 0.2 & tower"
+
+  - title: "tower"
+    bullets:
+      - "A library of modular and reusable components for building robust networking clients and servers."
+      - "Async RPC library"
+      - "Trait `tower::Service`"
+      - - "Simplified interface making it easy to write network applications in a modular and reusable way, decoupled from the underlying protocol"
+
+  - title: "hyper v0.13"
+    bullets:
+      - "https://seanmonstar.com/post/189594157852/hyper-v013"
+
+  - title: "wasmtime"
+    bullets:
+      - "https://github.com/bytecodealliance/wasmtime"
+      - "non-browser WASM runtime"
+
+  - title: "moxie"
+    bullets:
+      - "https://blog.anp.lol/rust/moxie-intro"
+
+  - title: "Abstreet"
+    bullets:
+      - " https://github.com/dabreegster/abstreet"
+
+  - title: End.
