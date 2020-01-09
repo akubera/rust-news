@@ -3,7 +3,6 @@ name = "news"
 version = "2018.8.9"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 edition = "2018"
-cargo-features = ["edition"]
 
 [dependencies]
 yaml-rust = "0.4.3"
