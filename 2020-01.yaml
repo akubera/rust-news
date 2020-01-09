@@ -1,0 +1,131 @@
+---
+title: January Rust News {{br}} 🗞
+date: Jan 09, 2020
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.40 🎉"
+
+  - title: "`#[non_exhaustive]`"
+    bullets:
+      - "struct/enum decorator"
+      - "Prevents code outside crate from constructing struct directly"
+      - "Still allow pub members"
+      - "Avoids breaking dependent crates using \"unstable\" structs"
+      - "On enums, requires wildcard matching (`_`)"
+
+  - title: "Call procedural macros in type definitions"
+    bullets:
+      - "type Foo = expand_to_type!(bar);"
+
+  - title: "Macros in `extern { ... }` blocks."
+    bullets:
+      - "type Foo = expand_to_type!(bar);"
+
+  - title: "Generate macros in procedural macros"
+    bullets:
+      - "Function and attribute macros can generate `macro_rules!`"
+
+  - title: "Add $m:meta matcher"
+    bullets:
+      - "macros can accept arbitrary token-stream values"
+
+  - title: "Rust 2015 fixes borrow checker"
+    bullets:
+      - "Old (Non-NLL) borrow checker had bugs"
+      - "These unsoundness bugs are now errors"
+      - - "Were being 'phased in' to not break stable code"
+
+  - title: "`const fn` updates"
+    bullets:
+      - "`is_power_two` for unsigned integers"
+
+  - title: "Stabilization"
+    bullets:
+      - "Add `todo!` macro"
+      - - "same as `unimplemented!`"
+
+  - title: "Stabilization"
+    bullets:
+      - "`slice::repeat(&self, n: usize)`"
+      - - "Create `Vec<T>` by repeating slice `n` times"
+
+  - title: "Stabilization"
+    bullets:
+      - "`mem::take`"
+      - - "Takes value from `&mut` value and replaces with default"
+
+  - title: "Stabilization"
+    bullets:
+      - "`{BTreeMap,HashMap}::get_key_value(key)`"
+      - - "Return key-value pair with the key key"
+
+  - title: "Stabilization - Option"
+    bullets:
+      - "`Option::flatten`"
+      - - "Moves `Option<Option<T>>` -> `Option<T>`"
+      - "`Option::{as_deref,as_deref_mut}`"
+      - - "Automatically dereference boxes"
+        - "`Option<Box<T>>` -> `Option<&T>`"
+
+  - title: "Stabilization"
+    bullets:
+      - "`UdpSocket::peer_addr`"
+      - - "Get socket address of peer socket was connected to"
+      - "Floating point `{to,from}_{be,le,ne}_bytes`"
+      - - "Easy serialization"
+
+  - title: "Crates of the Month "
+
+  - title: "bstr"
+    bullets:
+      - "True Byte-Strings"
+      - "Non-utf8 string structure"
+      - - "Stil get human language methods like `to_uppercase`"
+      - "Andrew says: 'avoid'"
+
+  - title: "staticvec"
+    bullets:
+      - "Vec interface around static (stack-based) array"
+
+  - title: "attohttp"
+    bullets:
+      - "https://crates.io/crates/attohttpc"
+      - "lightweight and simple HTTP client"
+      - "synchronous, serde, "
+      - "Implements Happy Eyeballs"
+
+  - title: "sqlx"
+    bullets:
+      - "https://crates.io/crates/sqlx"
+      - "asynchronous, typesafe SQL client"
+
+  - title: "cargo scout"
+    bullets:
+      - "https://github.com/o0Ignition0o/cargo-scout"
+      - "Run clippy only on the code that chages"
+      - - "As reported by git-diff"
+
+  - title: "Rust Projects"
+
+  - title: "ffsend"
+    bullets:
+      - "https://gitlab.com/timvisee/ffsend"
+      - "Command-line Firefox Send client"
+      - "Upload file to mozilla servers, get unique link back"
+      - "Features like limit number of downloads"
+
+  - title: "refinery"
+    bullets:
+      - "https://github.com/rust-db/refinery"
+      - "SQL migration toolkit"
+      - '`embed_migrations!("refinery/tests/sql_migrations");`'
+
+  - title: "Papyrus"
+    bullets:
+      - "https://github.com/kurtlawrence/papyrus"
+      - "A rust REPL and script running tool"
+      - "`cargo +nightly install papyrus`"
+
+  - title: End.
