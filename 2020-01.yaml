@@ -11,23 +11,59 @@ slides:
     bullets:
       - "struct/enum decorator"
       - "Prevents code outside crate from constructing struct directly"
-      - "Still allow pub members"
-      - "Avoids breaking dependent crates using \"unstable\" structs"
+      - - "Avoids breaking dependent crates using \"unstable\" structs"
+      - "Still allow pub member acces"
+
+  - title: "`#[non_exhaustive]`"
+    bullets:
+      - |
+        ```rust
+        #[non_exhaustive]
+        struct Foo {
+          x: i32
+        }
+
+        // Error
+        let foo = Foo { x: 42 };        ,
+        ```
+
+  - title: "`#[non_exhaustive]`"
+    bullets:
       - "On enums, requires wildcard matching (`_`)"
+
+  - title: "`#[non_exhaustive]`"
+    bullets:
+      - |
+        ```rust
+        #[non_exhaustive]
+        enum Foo {
+          State1,
+          State2,
+        }
+
+
+        match state {
+          State1 => { .. }
+          State1 => { .. }
+          // Required
+          _ => { Err("Unknown State")}             ,
+        }
+        ```
+
 
   - title: "Call procedural macros in type definitions"
     bullets:
-      - "type Foo = expand_to_type!(bar);"
+      - "`type Foo = expand_to_type!(bar);`"
 
-  - title: "Macros in `extern { ... }` blocks."
+  - title: "Macros in `extern` blocks"
     bullets:
-      - "type Foo = expand_to_type!(bar);"
+      - "`extern { define_c_strucs!(); }`"
 
   - title: "Generate macros in procedural macros"
     bullets:
-      - "Function and attribute macros can generate `macro_rules!`"
+      - "Function-macros and attributes macros can generate their own `macro_rules!`"
 
-  - title: "Add $m:meta matcher"
+  - title: "Add `$m:meta` matcher"
     bullets:
       - "macros can accept arbitrary token-stream values"
 
@@ -59,7 +95,7 @@ slides:
   - title: "Stabilization"
     bullets:
       - "`{BTreeMap,HashMap}::get_key_value(key)`"
-      - - "Return key-value pair with the key key"
+      - - "Return key-value pair with given key"
 
   - title: "Stabilization - Option"
     bullets:
@@ -72,7 +108,10 @@ slides:
   - title: "Stabilization"
     bullets:
       - "`UdpSocket::peer_addr`"
-      - - "Get socket address of peer socket was connected to"
+      - - "Get socket address of peer to which you are connected"
+
+  - title: "Stabilization"
+    bullets:
       - "Floating point `{to,from}_{be,le,ne}_bytes`"
       - - "Easy serialization"
 
@@ -80,6 +119,7 @@ slides:
 
   - title: "bstr"
     bullets:
+      - "https://crates.io/crates/bstr"
       - "True Byte-Strings"
       - "Non-utf8 string structure"
       - - "Stil get human language methods like `to_uppercase`"
@@ -87,6 +127,7 @@ slides:
 
   - title: "staticvec"
     bullets:
+      - "https://crates.io/crates/staticvec"
       - "Vec interface around static (stack-based) array"
 
   - title: "attohttp"
@@ -127,5 +168,11 @@ slides:
       - "https://github.com/kurtlawrence/papyrus"
       - "A rust REPL and script running tool"
       - "`cargo +nightly install papyrus`"
+
+  - title: Around the web
+
+  - title: "Interior Mutability Patterns"
+    bullets:
+      - "https://pitdicker.github.io/Interior-mutability-patterns/"
 
   - title: End.
