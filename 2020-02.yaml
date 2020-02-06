@@ -1,0 +1,68 @@
+---
+title: February Rust News {{br}} 🗞
+date: Feb 13, 2020
+author: Andrew Kubera
+
+slides:
+
+  - title: "Rust 1.41 🎉"
+
+  - title: "Rust 1.41"
+    bullets:
+      - "Relaxed 'orphan rule'"
+      - - "trait `impl` allowed for generics"
+        - |
+          ```rust
+          impl<T> ForeignTrait<LocalType> for ForeignType<T> {
+          // ...
+          }
+          ```
+
+  - title: "Rust 1.41"
+    bullets:
+      - "Arbitrary receiver types for 'self'"
+      - - "Now legal:"
+        - "`fn foo(self: Box<Box<Self>>) {}`"
+      - "Could only use `{Box,Rc,Arc}<Self>`, now any nesting legal"
+
+  - title: "Rust 1.41"
+    bullets:
+      - "Cargo install updates by default"
+      - "No longer need to pass `--force`"
+      - "(Andrew says: just use `topgrade`)"
+
+  - title: "Rust 1.41"
+    bullets:
+      - "Cargo.lock format updated (again)"
+      - "Formatted for better conflict avoidance"
+
+  - title: "Rust 1.41"
+    bullets:
+      - "`Box<T>` now ABI compatible with C pointers"
+      - "FFI is easier/safer" 
+      - "Use `Option<Box<T>>` to allow for null pointers"
+
+  - title: "Rust 1.41 - Stabilized"
+    bullets:
+      - "`Results::{map_or,map_or_else}`"
+      - - "Mirror the `Option` methods"
+
+  - title: "Rust 1.41 - Stabilized"
+    bullets:
+      - "`NonZero*` numerics now implement `From<NonZero*>`"
+
+  - title: "Rust 1.41 - Stabilized"
+    bullets:
+      - "`Weak::{weak_count,strong_count}` methods"
+      - "Return number of weak & strong references to the Rc/Arc object"
+
+  - title: "Rust 1.41 - Stabilized"
+    bullets:
+      - "`MaybeUninit<T>` now implements `fmt::Debug`"
+
+  - title: "Rust 1.41"
+    bullets:
+      - "**Constant propagation** in MIR"
+      - - "Optimization replacing expressions using constants at compile time"
+        - "Was present in LLVM -- now better in MIR"
+
