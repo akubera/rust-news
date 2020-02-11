@@ -11,3 +11,7 @@ crate-type = ["cdylib"]
 
 [dependencies]
 stdweb = "0.4"
+
+[dev-dependencies]
+maud = "0.21"
+maud_macros = "0.21"
