@@ -5,13 +5,13 @@ version = "2020.2.13"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 edition = "2018"
 
-[lib]
-name = "news"
-crate-type = ["cdylib"]
-
 [dependencies]
 stdweb = "0.4"
+horrorshow = "0.7"
 
-[dev-dependencies]
-maud = "0.21"
-maud_macros = "0.21"
+[build-dependencies]
+# maud = "0.21"
+# maud_macros = "0.21"
+yaml-rust = "0.4"
+
+horrorshow = "0.7"
