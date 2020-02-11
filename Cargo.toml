@@ -1,29 +1,11 @@
 [package]
 
 name = "news"
-version = "2016.7.13"
+version = "2020.2.13"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 
 [lib]
 name = "news"
-# crate-type = ["dylib"]
+crate-type = ["cdylib"]
 
 [dependencies]
-pencil = "^0.2"
-yaml-rust = "^0.3"
-webbrowser = "*"
-walkdir = {path = "src/walkdir"}
-horrorshow = "0.5.6"
-
-
-# iron = "0.2.2"
-# router = "*"
-
-# rust-haml = "*"
-
-# maud = "*"
-# maud_macros = "*"
-
-# staticfile = "*"
-# logger = "*"
-# pencil = "^0.1"
