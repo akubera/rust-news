@@ -3,9 +3,11 @@
 name = "news"
 version = "2020.2.13"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
+edition = "2018"
 
 [lib]
 name = "news"
 crate-type = ["cdylib"]
 
 [dependencies]
+stdweb = "0.4"
