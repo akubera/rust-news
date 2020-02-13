@@ -36,6 +36,10 @@ fn build_slides() -> Result<(), Error>
     }
   }
 
+  slideshows.sort_by(|a, b| {
+    b.0.cmp(&a.0)
+  });
+
   let dest_path = Path::new(&out_dir).join("precompiled_slides.rs");
   let mut f = File::create(&dest_path).unwrap();
 

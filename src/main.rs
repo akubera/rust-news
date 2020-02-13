@@ -25,7 +25,7 @@ impl Model {
     html! {
       <>
         <ul>
-          { for self.slideshows.iter().enumerate().rev().map(|(idx, s)| self.slideshow_link(idx, s)) }
+          { for self.slideshows.iter().enumerate().map(|(idx, s)| self.slideshow_link(idx, s)) }
         </ul>
         <button onclick=|_| Msg::DoIt>{ "Click me!" }</button>
       </>
