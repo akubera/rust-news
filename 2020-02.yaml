@@ -1,5 +1,5 @@
 ---
-title: February Rust News {{br}} 🗞
+title: February Rust News -- 🗞
 date: Feb 13, 2020
 author: Andrew Kubera
 
@@ -39,7 +39,7 @@ slides:
   - title: "Rust 1.41"
     bullets:
       - "`Box<T>` now ABI compatible with C pointers"
-      - "FFI is easier/safer" 
+      - "FFI is easier/safer"
       - "Use `Option<Box<T>>` to allow for null pointers"
 
   - title: "Rust 1.41 - Stabilized"
@@ -65,4 +65,3 @@ slides:
       - "**Constant propagation** in MIR"
       - - "Optimization replacing expressions using constants at compile time"
         - "Was present in LLVM -- now better in MIR"
-
