@@ -2,10 +2,13 @@
 
 use stdweb::web::alert;
 use yew::{html, Component, ComponentLink, Html, ShouldRender};
+use slideby::SlideShow;
 
-mod client;
+include!(concat!(env!("OUT_DIR"), "/precompiled_slides.rs"));
 
-struct Model { }
+struct Model {
+  slideshows: Vec<SlideShow>,
+}
 
 enum Msg {
   DoIt,
@@ -17,7 +20,9 @@ impl Component for Model {
 
   fn create(_: Self::Properties, _: ComponentLink<Self>) -> Self
   {
-    Model { }
+    Model {
+      slideshows: load_slideshows()
+    }
   }
 
   fn update(&mut self, msg: Self::Message) -> ShouldRender
@@ -34,9 +39,20 @@ impl Component for Model {
   fn view(&self) -> Html<Self>
   {
     html! {
-      // Render your model here
-      <button onclick=|_| Msg::DoIt>{ "Click me!" }</button>
+      <>
+        <ul>
+          { for self.slideshows.iter().map(slideshow_link) }
+        </ul>
+        <button onclick=|_| Msg::DoIt>{ "Click me!" }</button>
+      </>
     }
+  }
+}
+
+fn slideshow_link(slideshow: &SlideShow) -> Html<Model>
+{
+  html! {
+    <li>{ slideshow.date.clone() }</li>
   }
 }
 
