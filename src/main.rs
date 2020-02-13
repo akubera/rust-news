@@ -34,38 +34,6 @@ impl Model {
 
   fn draw_slide(&self, index: usize) -> Html<Self>
   {
-    /*
-    let head = web::document().head().unwrap();
-    let body = web::document().body().unwrap();
-
-    let scripts = HTML! {
-      script(src="/js/jquery-3.4.1.min.js") {}
-      script(src="/revealjs/reveal.js") {}
-      script {:
-        "
-          Revleal.initialize({
-          controls: true,
-          progress: true,
-          history: true,
-          center: true,
-
-          transition: 'slide',
-        })
-      "
-      }
-    };
-
-    head.append_html(&format!("{}", scripts));
-
-    let content = HTML! {
-      div {
-        h1 {: " TEXT" }
-      }
-    };
-
-    body.append_html(&format!("{}", content));
-    */
-
     let slideshow = &self.slideshows[index];
     html! {
       <>
@@ -108,10 +76,10 @@ impl Model {
             list-style-type: none;
           }
           .slides > section > ul > li > span:before {
-            content: \"• \";
+            content: "• ";
           }
           .reveal section > ul > li > ul > li > span:before {
-            content: \"› \";
+            content: "› ";
           }
           .reveal pre {
             display: inline-block;
@@ -138,6 +106,21 @@ impl Model {
 
 }
 
+
+fn bullets_to_html(bullets: &Vec<Bullet>) -> Html<Model>
+{
+  html! {
+    <ul>
+      {
+        for bullets.iter().map(|b| match b {
+          Bullet::Text(s) => html! { <li><span>{ &s }</span></li> },
+          Bullet::SubBullets(b) => html! { <li> { bullets_to_html(&b) } </li> },
+        })
+      }
+    </ul>
+  }
+}
+
 fn slideshow_to_html(slideshow: &SlideShow) -> Html<Model>
 {
   let title_slide = html! {
@@ -147,29 +130,6 @@ fn slideshow_to_html(slideshow: &SlideShow) -> Html<Model>
       <p> <small> { &slideshow.author } </small> </p>
     </section>
   };
-
-  let bullets_to_html = |bullets: &Vec<Bullet>| { html! {
-    <ul> {
-      for bullets.iter().map(|b| match b {
-        Bullet::Text(s) => html! { <li> { &s }</li> },
-        Bullet::SubBullets(b) => html! { },
-      })
-    }    /*
-      {
-        for bullets.iter().map(|b| html! {
-          <li> {
-            if b.text.len() != 0 {
-              html! { {&b.text} }
-            } else if b.bullets.len() > 0 {
-              html!  {}
-            } else {
-              html!  {}
-            }
-         } </li> })
-      }
-      */
-    </ul>
-  }};
 
   let slide_to_html = |s: &Slide| { html! {
     <section>
@@ -181,7 +141,9 @@ fn slideshow_to_html(slideshow: &SlideShow) -> Html<Model>
         }
       }
 
-      {bullets_to_html(&s.bullets)}
+      {
+        bullets_to_html(&s.bullets)
+      }
     </section>
   }};
 
