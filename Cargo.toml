@@ -6,8 +6,10 @@ authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
 edition = "2018"
 
 [dependencies]
-stdweb = "0.4"
+stdweb = "0.4.20"
 horrorshow = "0.7"
+yew = { version = "0.10", features = ["toml", "yaml", "msgpack", "cbor"] }
+slideby = { version = "*", path="slideby"}
 
 [build-dependencies]
 # maud = "0.21"
@@ -15,3 +17,5 @@ horrorshow = "0.7"
 yaml-rust = "0.4"
 
 horrorshow = "0.7"
+failure = "0.1"
+slideby = { version = "*", path="slideby"}
