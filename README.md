@@ -3,6 +3,15 @@
 A rust application which compiles rust-community news
 
 
+### To Run:
+
+```bash
+$ cargo install cargo-web
+$ cargo web start
+```
+
+
+
 ## About
 
 This is a little project to see if git-based collaboration is practical.
@@ -15,7 +24,6 @@ This repository has two parts:
 
 To submit news, fork this repository and pull only the news branch. Add/edit yaml files to your content
 and submit a pull request.
-
 
 ### Submodules
 
