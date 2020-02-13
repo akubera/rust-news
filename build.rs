@@ -27,22 +27,23 @@ fn build_slides() -> Result<(), Error>
     println!("cargo:rerun-if-changed={}", filename);
 
     if filename.ends_with(".yaml") {
-
-      let slideshow = SlideShow::from_yaml_path(next_file);
-
-      slideshows.push((filename, slideshow));
+      if let Some(slideshow) = SlideShow::from_yaml_path(next_file) {
+        slideshows.push((filename, slideshow));
+      } else {
+        let err = failure::err_msg(format!("Reading yaml file {:?} failed", filename));
+        return Err(err);
+      }
     }
   }
 
   let dest_path = Path::new(&out_dir).join("precompiled_slides.rs");
   let mut f = File::create(&dest_path).unwrap();
 
-  writeln!(&mut f, "fn load_slides() -> Vec<Vec<u8>> {{");
-  // writeln!(&mut f, "fn load_slides() -> Vec<String> {{");
+  writeln!(&mut f, "pub fn load_slideshows() -> Vec<SlideShow> {{");
   writeln!(&mut f, "  vec![");
   for (_filename, slideshow) in slideshows {
-    writeln!(&mut f, "   vec!{:?},", rmp_serde::to_vec(&slideshow).unwrap());
-    // writeln!(&mut f, "   {:?}.into(),", serde_json::to_string(&slideshow).unwrap());
+    // writeln!(&mut f, "   rmp_serde::from_slice(&{:?}).unwrap(),", rmp_serde::to_vec(&slideshow).unwrap());
+    writeln!(&mut f, "   serde_json::from_str({:?}).unwrap(),", serde_json::to_string(&slideshow).unwrap());
   }
   writeln!(&mut f, "]}} ");
 
