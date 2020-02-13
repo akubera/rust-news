@@ -39,13 +39,13 @@ fn build_slides() -> Result<(), Error>
   let dest_path = Path::new(&out_dir).join("precompiled_slides.rs");
   let mut f = File::create(&dest_path).unwrap();
 
-  writeln!(&mut f, "pub fn load_slideshows() -> Vec<SlideShow> {{");
-  writeln!(&mut f, "  vec![");
+  writeln!(&mut f, "pub fn load_slideshows() -> Vec<SlideShow> {{").unwrap();
+  writeln!(&mut f, "  vec![").unwrap();
   for (_filename, slideshow) in slideshows {
-    // writeln!(&mut f, "   rmp_serde::from_slice(&{:?}).unwrap(),", rmp_serde::to_vec(&slideshow).unwrap());
-    writeln!(&mut f, "   serde_json::from_str({:?}).unwrap(),", serde_json::to_string(&slideshow).unwrap());
+    // writeln!(&mut f, "   rmp_serde::from_slice(&{:?}).unwrap(),", rmp_serde::to_vec(&slideshow).unwrap()).unwrap();
+    writeln!(&mut f, "   serde_json::from_str({:?}).unwrap(),", serde_json::to_string(&slideshow).unwrap()).unwrap();
   }
-  writeln!(&mut f, "]}} ");
+  writeln!(&mut f, "]}} ").unwrap();
 
   Ok(())
 }
