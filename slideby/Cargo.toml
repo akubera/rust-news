@@ -1,0 +1,10 @@
+[package]
+name = "slideby"
+version = "0.1.0"
+authors = ["Andrew Kubera <andrew.kubera@floss.email>"]
+edition = "2018"
+
+[dependencies]
+yaml-rust = "0.4"
+horrorshow = "*"
+serde = { version = "1", features = ["derive"] }

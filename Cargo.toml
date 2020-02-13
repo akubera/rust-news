@@ -1,29 +1,22 @@
 [package]
 
 name = "news"
-version = "2016.7.13"
+version = "2020.2.13"
 authors = ["Andrew Kubera <andrewkubera@gmail.com>"]
-
-[lib]
-name = "news"
-# crate-type = ["dylib"]
+edition = "2018"
 
 [dependencies]
-pencil = "^0.2"
-yaml-rust = "^0.3"
-webbrowser = "*"
-walkdir = {path = "src/walkdir"}
-horrorshow = "0.5.6"
+stdweb = "0.4.20"
+horrorshow = "0.7"
+yew = { version = "0.10", features = ["toml", "yaml", "msgpack", "cbor"] }
+slideby = { version = "*", path="slideby"}
 
+serde_json = { version = "1.0", default-features = false, features = ["alloc"] }
+rmp-serde = "*"
 
-# iron = "0.2.2"
-# router = "*"
+[build-dependencies]
+failure = "0.1"
+slideby = { version = "*", path = "slideby" }
 
-# rust-haml = "*"
-
-# maud = "*"
-# maud_macros = "*"
-
-# staticfile = "*"
-# logger = "*"
-# pencil = "^0.1"
+serde_json = { version = "1.0", default-features = false }
+rmp-serde = "*"

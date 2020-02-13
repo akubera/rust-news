@@ -17,6 +17,7 @@ use std::collections::BTreeMap;
 
 use syntax::ext::base as ext_base;
 use syntax::ext::build::AstBuilder;
+use syntax::symbol::Symbol;
 use syntax::parse::token;
 use syntax_pos::Span;
 use syntax::tokenstream::TokenTree;
@@ -89,7 +90,7 @@ pub fn _list_dir<'cx>(cx: &'cx mut ext_base::ExtCtxt, sp: Span, args: &[TokenTre
   let mut subdocs = Vec::new();
 
   for filename in yaml_file_vec {
-    let interned_string = token::intern_and_get_ident(filename.as_str());
+    let interned_string = Symbol::intern(filename.as_str());
     let yaml_item = cx.expr_str(sp, interned_string);
     subdocs.insert(0, yaml_item);
   }
@@ -101,7 +102,7 @@ pub fn _list_dir<'cx>(cx: &'cx mut ext_base::ExtCtxt, sp: Span, args: &[TokenTre
 fn build_bullet(bullet: &Yaml) -> Result<String, String>
 {
   let bullet_txt = match bullet {
-    &Yaml::String(ref s) => String::from(s.as_str()),
+    &Yaml::String(ref s) => format!("<span>{}</span>", s),
     &Yaml::Array(ref a) => build_bullets(a).unwrap(),
     _ => {
       return Err(String::from("Bad Value"));
@@ -153,7 +154,7 @@ fn expand_yaml_slide(slide_data: &std::collections::BTreeMap<yaml_rust::Yaml, ya
   let hypertext = box_html! {
     section {
       h3 {: &title }
-      div {: raw!(&bullets) }
+      : raw!(&bullets);
     }
   };
 
@@ -184,6 +185,16 @@ pub fn expand_yaml_file(filename: &str) -> String
 
   let mut slide_vec = Vec::new();
 
+  let title_slide = html! {
+    section {
+      h1 {: &title }
+      p {: &date }
+      p { small {: &author } }
+    }
+  }
+                      .into_string()
+                      .unwrap();
+
   for slide in slides.iter() {
     let next_slide = slide.as_hash().unwrap();
     let slide_html = expand_yaml_slide(next_slide);
@@ -205,23 +216,39 @@ pub fn expand_yaml_file(filename: &str) -> String
           .reveal .slides > section {
             left: 0;
           }
-          .reveal ul {
+          .reveal section ul {
             font-family: monospace;
           }
           .reveal section > ul {
             margin-top: 40px;
           }
-          .reveal section > ul > ul {
+          .reveal section > ul ul {
+            margin-bottom: 20px;
+          }
+          .slides > section > ul li {
+            margin-top: 10px;
+          }
+          .reveal section ul {
             list-style-type: none;
           }
-          .reveal section > ul > ul > li:before {
-            content: \"- \";
+          .slides > section > ul > li > span:before {
+            content: \"• \";
+          }
+          .reveal section > ul > li > ul > li > span:before {
+            content: \"› \";
+          }
+          .reveal pre {
+            display: inline-block;
+            box-shadow: none;
+            border: thin dashed black;
+            padding-left: 14pt;
+            line-height: 2.5em;
           }
         ")}
       }
       body {
         div(class="reveal") {
-          div(class="slides") {: raw!(&slide_vec.join("\n")) }
+          div(class="slides") {: raw!(&[title_slide, slide_vec.join("\n")].join("")) }
         }
         script(src="/static/revealjs/js/head.min.js") {}
         script(src="/static/revealjs/reveal.js") {}
@@ -252,7 +279,7 @@ pub fn yaml_file_to_html<'cx>(cx: &'cx mut ext_base::ExtCtxt,
 {
   let filename = token_tree_to_str(&args[0]).unwrap();
   let html = expand_yaml_file(filename.as_str()); //.unwrap();
-  let interned_string = token::intern_and_get_ident(html.as_str());
+  let interned_string = Symbol::intern(html.as_str());
   let e = cx.expr_str(sp, interned_string);
   return ext_base::MacEager::expr(e);
 }
@@ -268,8 +295,9 @@ pub fn yaml_files_to_html_vec<'cx>(cx: &'cx mut ext_base::ExtCtxt,
   let mut subdocs = Vec::new();
 
   for i in find_yaml_filenames(dirname).iter() {
+    println!(">> {}", i);
     let s = expand_yaml_file(i.as_str());
-    let interned_string = token::intern_and_get_ident(s.as_str());
+    let interned_string = Symbol::intern(s.as_str());
     subdocs.insert(0, cx.expr_str(sp, interned_string));
   }
 

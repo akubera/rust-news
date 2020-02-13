@@ -29,10 +29,9 @@ pub fn HEAD() -> String
     meta(charset="utf-8") {}
     title {: "Rust News Roundup"}
     meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui") {}
-    script(src="https://code.jquery.com/jquery-2.1.4.min.js") {}
+    script(src="/js/jquery-3.4.1.min.js") {}
     link(rel="stylesheet", href="/static/reveal.min.css") {}
-    link(rel="stylesheet", href="/static/css/theme/simple.css") {}
-    link(rel="stylesheet", href="static/lib/css/zenburn.css") {}
+    link(rel="stylesheet", href="/revealjs/theme/simple.css") {}
   };
 
   return hypertext.into_string().unwrap();
