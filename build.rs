@@ -1,20 +1,10 @@
+//
+// build.rs
+//
 
-// extern crate maud;
-// extern crate maud;
+use std::{env, fs, path::Path, fs::File, io::Write};
 
-// use maud;
-
-// // use std::fs::{File, ReadDir};
-// use std::io::prelude::*;
-
-// use maud;
-
-use std::env;
-use std::fs::File;
-use std::io::prelude::*;
-use std::path::Path;
-
-use slideby::{yaml, SlideShow, Slide};
+use slideby::{SlideShow, Slide};
 use failure::Error;
 
 
@@ -29,10 +19,27 @@ fn build_slides() -> Result<(), Error>
 {
   let out_dir = env::var("OUT_DIR").unwrap();
 
-  let foobar = SlideShow::from_yaml_path("data/2016-12-08.yaml");
+  let mut slideshows = vec![];
 
-  // let dest_path = Path::new(&out_dir).join("hello.rs");
-  // let mut f = File::create(&dest_path).unwrap();
+  for entry in fs::read_dir("data").unwrap() {
+    let next_file = entry.unwrap().path();
+    let filename: String = next_file.as_os_str().to_str().unwrap().into();
+    println!("cargo:rerun-if-changed={}", filename);
+
+    if filename.ends_with(".yaml") {
+
+      let slideshow = SlideShow::from_yaml_path(next_file);
+
+      slideshows.push((filename, slideshow));
+    }
+  }
+
+  let dest_path = Path::new(&out_dir).join("precompiled_slides.rs");
+  let mut f = File::create(&dest_path).unwrap();
+
+  for (filename, slideshow) in slideshows {
+    // f.write
+  }
 
   // f.write_all(b"
   //     pub fn message() -> &'static str {
