@@ -103,23 +103,21 @@ impl Slide {
 
 /// An individual bullet, with text and maybe sub-bullets
 #[derive(Serialize, Deserialize, Debug)]
-pub struct Bullet {
-  pub text: String,
-  pub bullets: Vec<Bullet>,
+pub enum Bullet {
+  Text(String),
+  SubBullets(Vec<Bullet>),
 }
 
 impl Bullet {
   // fn read_vec_from_yaml(y: &Yaml) -> Vec<Bullet>
   fn read_from_yaml(y: &Yaml) -> Bullet
   {
-    let (text, bullets) = match y {
-      &Yaml::String(ref s) => (format!("<span>{}</span>", s), vec![]),
-      &Yaml::Array(ref a) => ("".into(), a.iter().map(Bullet::read_from_yaml).collect()),
+    match y {
+      &Yaml::String(ref s) => Bullet::Text(String::from(s)),
+      &Yaml::Array(ref a) => Bullet::SubBullets(a.iter().map(Bullet::read_from_yaml).collect()),
       _ => {
         panic!("Invalid bullet");
       }
-    };
-
-    Bullet {text, bullets}
+    }
   }
 }
