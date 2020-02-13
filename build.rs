@@ -4,7 +4,7 @@
 
 use std::{env, fs, path::Path, fs::File, io::Write};
 
-use slideby::{SlideShow, Slide};
+use slideby::SlideShow;
 use failure::Error;
 
 
@@ -37,14 +37,14 @@ fn build_slides() -> Result<(), Error>
   let dest_path = Path::new(&out_dir).join("precompiled_slides.rs");
   let mut f = File::create(&dest_path).unwrap();
 
-  for (filename, slideshow) in slideshows {
-    // f.write
+  writeln!(&mut f, "fn load_slides() -> Vec<Vec<u8>> {{");
+  // writeln!(&mut f, "fn load_slides() -> Vec<String> {{");
+  writeln!(&mut f, "  vec![");
+  for (_filename, slideshow) in slideshows {
+    writeln!(&mut f, "   vec!{:?},", rmp_serde::to_vec(&slideshow).unwrap());
+    // writeln!(&mut f, "   {:?}.into(),", serde_json::to_string(&slideshow).unwrap());
   }
+  writeln!(&mut f, "]}} ");
 
-  // f.write_all(b"
-  //     pub fn message() -> &'static str {
-  //         \"Hello, World!\"
-  //     }
-  // ").unwrap();
   Ok(())
 }

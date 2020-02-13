@@ -8,12 +8,14 @@ use std::{
     io::prelude::*,
 };
 
+
+#[derive(Serialize, Deserialize, Debug,)]
 pub struct SlideShow {
   pub title: String,
   pub author: String,
   pub date: String,
 
-  pub slides: Vec<Slide>,
+  pub slides: Vec<String>,
 }
 
 impl SlideShow {
@@ -29,11 +31,13 @@ impl SlideShow {
     let doc = &docs[0];
 
     let title = doc["title"].as_str().unwrap_or("");
+    let author = doc["author"].as_str().unwrap_or("");
+    let date = doc["date"].as_str().unwrap_or("");
 
     Some(SlideShow {
       title: title.into(),
-      author: "".into(),
-      date: "".into(),
+      author: author.into(),
+      date: date.into(),
       slides: vec![],
     })
   }
