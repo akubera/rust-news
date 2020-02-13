@@ -9,7 +9,7 @@ slides:
 
   - title: "Rust 1.37"
     bullets:
-      - "Access enum variants thr"ough type aliases"
+      - "Access enum variants through type aliases"
       - - "`type ByteOption = Option<u8>;`"
         - "`ByteOption::Some(v)`"
       - "Can Use `Self::Variant` now"
