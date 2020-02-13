@@ -1,5 +1,5 @@
 
-pub use yaml_rust::yaml;
+pub use yaml_rust::yaml::{self, Yaml};
 
 use serde::{Serialize, Deserialize};
 use std::{
@@ -15,7 +15,7 @@ pub struct SlideShow {
   pub author: String,
   pub date: String,
 
-  pub slides: Vec<String>,
+  pub slides: Vec<Slide>,
 }
 
 impl SlideShow {
@@ -34,11 +34,13 @@ impl SlideShow {
     let author = doc["author"].as_str().unwrap_or("");
     let date = doc["date"].as_str().unwrap_or("");
 
+    let slide_srcs = doc["slides"].as_vec().unwrap();
+
     Some(SlideShow {
       title: title.into(),
       author: author.into(),
       date: date.into(),
-      slides: vec![],
+      slides: slide_srcs.iter().map(Slide::from_yaml).collect(),
     })
   }
 
@@ -66,21 +68,58 @@ impl SlideShow {
 }
 
 
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Slide {
   pub title: Option<String>,
   pub bullets: Vec<Bullet>,
 }
 
-
 impl Slide {
-  pub fn from_yaml() -> Vec<Slide>
+  pub fn from_yaml(y: &yaml::Yaml) -> Slide
   {
-    vec![]
+    let title_key = Yaml::from_str("title");
+    let bullets_key = Yaml::from_str("bullets");
+
+    let slide_data = y.as_hash().unwrap();
+
+    let title = match slide_data.get(&title_key) {
+      Some(&Yaml::String(ref s)) => Some(String::from(s.as_str())),
+      _ => None,
+    };
+
+    let bullets = match slide_data.get(&bullets_key) {
+      Some(&Yaml::Array(ref a)) => a.iter().map(Bullet::read_from_yaml).collect(),
+      // Bullet::read_vec_from_yaml(a),
+      Some(&Yaml::Null) => vec![],
+      Some(_) => panic!("bullets not an array"),
+      None => vec![],
+    };
+
+    Slide {
+      title, bullets
+    }
   }
 }
 
 /// An individual bullet, with text and maybe sub-bullets
+#[derive(Serialize, Deserialize, Debug)]
 pub struct Bullet {
   pub text: String,
   pub bullets: Vec<Bullet>,
+}
+
+impl Bullet {
+  // fn read_vec_from_yaml(y: &Yaml) -> Vec<Bullet>
+  fn read_from_yaml(y: &Yaml) -> Bullet
+  {
+    let (text, bullets) = match y {
+      &Yaml::String(ref s) => (format!("<span>{}</span>", s), vec![]),
+      &Yaml::Array(ref a) => ("".into(), a.iter().map(Bullet::read_from_yaml).collect()),
+      _ => {
+        panic!("Invalid bullet");
+      }
+    };
+
+    Bullet {text, bullets}
+  }
 }
